@@ -145,7 +145,7 @@ Last Updated on \today % Last Updated text
   \setkeys{createposition}{company={My Company},title={Engineer of nothing},date={May 2013 - Aug 2013}, location={Russia}, logo={images/logo/mcdonalds}, description={},#1}%
     
     % first minipage for position details and decscription
-    \begin{minipage}{0.985\linewidth}  
+    \begin{minipage}{0.92\linewidth}  
     % company/university name
   \color{subheadings}\fontspec[Path = fonts/lato/]{Lato-Bol}\fontsize{12pt}{12pt}\selectfont\bfseries\uppercase {\mm@company} \normalfont
   % same line job title
@@ -159,8 +159,10 @@ Last Updated on \today % Last Updated text
   \mm@description
   	\end{minipage}%
   	% second minipage for company logo
-  	\begin{minipage}{0.005\linewidth}
-  	\ifthenelse{\equal{\mm@logo}{}}{}{\includegraphics[width=0.95cm] {\mm@logo}}
+  	\begin{minipage}{0.05\linewidth}
+  	% skip some space between text and logo
+  	~~~~~~~~
+  	\ifthenelse{\equal{\mm@logo}{}}{}{\includegraphics[width=1.4cm] {\mm@logo}}
 	\end{minipage}%
 }
 \makeatother
