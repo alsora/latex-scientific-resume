@@ -22,6 +22,14 @@
 \definecolor{subheadings}{HTML}{333333} % The color of subsections and places worked/studied
 \definecolor{date}{HTML}{666666} % The color used for the Last Updated text at the top right
 
+\definecolor{darkgray}{HTML}{333333}
+\definecolor{gray}{HTML}{5D5D5D}
+\definecolor{lightgray}{HTML}{999999}
+\definecolor{darktext}{HTML}{414141}
+\colorlet{text}{darkgray}
+\colorlet{graytext}{gray}
+\colorlet{lighttext}{lightgray}
+
 %----------------------------------------------------------------------------------------
 %	FONTS
 %----------------------------------------------------------------------------------------
@@ -52,6 +60,7 @@ Last Updated on \today % Last Updated text
 %----------------------------------------------------------------------------------------
 
 \usepackage{fontawesome}
+
 
 \makeatletter
 % ========= KEY DEFINITIONS =========
@@ -84,8 +93,6 @@ Last Updated on \today % Last Updated text
 } % Contact information font
 \noindent\makebox[\linewidth]{\color{headings}\rule{\paperwidth}{0.4pt}} % Horizontal rule
 \vspace{-5pt} % Reduce whitespace after the rule slightly
-
-
 
 }
 \makeatother
