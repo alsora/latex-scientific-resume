@@ -1,0 +1,258 @@
+%%
+%% this resume has to be built using XeLaTex
+%%
+
+
+\documentclass[letterpaper]{soragna-onepage-twocols} % Use US Letter paper, change to a4paper for A4 
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\lastupdated % Print the Last Updated text at the top right
+
+
+%\namesection{Alberto}{Soragna} % Your name
+%{ % your data
+%\urlstyle{same}\url{http://debarghyadas.com}
+%\href{mailto:dd367@cornell.edu}{dd367@cornell.edu} | 607.379.5733 % Your contact information
+%}
+
+\headersection{
+    name={Alberto},
+    surname={Soragna},
+    mail={dd367@cornell.edu}
+}
+
+%----------------------------------------------------------------------------------------
+%	LEFT COLUMN
+%----------------------------------------------------------------------------------------
+
+\begin{minipage}[t]{0.33\textwidth} % The left column takes up 33% of the text width of the page
+
+%------------------------------------------------
+% Education
+%------------------------------------------------
+
+%------------------------------------------------
+% Languages
+%------------------------------------------------
+
+\section{Languages} 
+
+% download more flags from here
+%https://github.com/gosquared/flags/tree/master/flags/flags/shiny/64
+
+\includegraphics[width=1em]{images/flag/Italy.png} ~ {\bf Italian}: ~ Mothertongue\\
+\includegraphics[width=1em]{images/flag/United-Kingdom.png} ~ {\bf English}: ~ Proficient\\
+\includegraphics[width=1em]{images/flag/China.png} ~ {\bf Chinese}: ~ Basic spoken\\
+
+
+\sectionspace % Some whitespace after the section
+
+%------------------------------------------------
+% Coursework
+%------------------------------------------------
+
+\section{Coursework}
+
+\subsection{Graduate}
+
+Advanced Machine Learning \\
+Open Source Software Engineering \\
+Advanced Interactive Graphics \\
+Compilers + Practicum \\
+Cloud Computing
+
+\sectionspace % Some whitespace after the section
+
+%------------------------------------------------
+
+\subsection{Undergraduate}
+
+Information Retrieval \\
+Operating Systems \\
+Artificial Intelligence + Practicum \\
+Functional Programming \\
+Computer Graphics + Practicum \\
+{\footnotesize \textit{\textbf{(Research Asst. \& Teaching Asst) }}} \\
+Unix Tools and Scripting
+
+\sectionspace % Some whitespace after the section
+
+%------------------------------------------------
+% Skills
+%------------------------------------------------
+
+\section{Skills}
+
+\subsection{Programming}
+
+\location{Over 5000 lines:}
+Java \textbullet{} Shell \textbullet{} JavaScript \textbullet{} Matlab \\
+OCaml \textbullet{} Python \textbullet{} Rails \textbullet{} \LaTeX\ \\ 
+\location{Over 1000 lines:}
+C \textbullet{} C++ \textbullet{} CSS \textbullet{} PHP \textbullet{} Assembly \\
+\location{Familiar:}
+AS3 \textbullet{} iOS \textbullet{} Android \textbullet{} MySQL
+
+\sectionspace % Some whitespace after the section
+
+%----------------------------------------------------------------------------------------
+
+\end{minipage} % The end of the left column
+\hfill
+%
+%----------------------------------------------------------------------------------------
+%	RIGHT COLUMN
+%----------------------------------------------------------------------------------------
+%
+\begin{minipage}[t]{0.66\textwidth} % The right column takes up 66% of the text width of the page
+
+%------------------------------------------------
+% Experience
+%------------------------------------------------
+
+\section{Experience}
+
+%------------------------------------------------
+
+\createposition{
+    company={COURSERA},
+    title={KPCB Fellow + Software Engineering Intern},
+    date={Expected June 2014 – Sep 2014},
+    location={Mountain View, CA},
+    logo={images/logo/coursera.png},
+    description={
+        \begin{tightitemize}
+            \item 52 out of 2500 applicants chosen to be a KPCB Fellow 2014.
+        \end{tightitemize}
+    }
+}
+
+\sectionspace % Some whitespace between each position
+
+\createposition{
+    company={CORNELL ROBOTICS LAB},
+    title={Head Undergrad Research},
+    date={Mar 2014 – Present},
+    location={Ithaca, NY},
+    logo={},
+    description={
+        Worked with \textbf{\href{http://www.cs.cornell.edu/~ashesh/}{Ashesh Jain}} and \textbf{\href{http://www.cs.cornell.edu/~asaxena/}{Prof Ashutosh Saxena}} to create \textbf{PlanIt}, a tool which learns from large scale user preference feedback to plan robot trajectories in human environments. Publication submitted.
+    }
+}
+
+\sectionspace % Some whitespace between each position
+
+\createposition{
+    company={MCDONALDS},
+    title={Collaborator},
+    date={Jan 2014 – Mar 2014},
+    location={Ithaca, NY},
+    logo={images/logo/mcdonalds.jpg},
+    description={
+Placeholder text designed to have exactly three lines. Three lines describing what you did in this job is just about right for this template. Keep it simple and understandable. Let the details for the interview.
+    }
+}
+
+
+
+\sectionspace % Some whitespace between each position
+
+%------------------------------------------------
+% Education
+%------------------------------------------------
+
+\section{Education}
+
+
+\createposition{
+    company={LA SAPIENZA},
+    title={MSc. Artificial Intelligence and Robotics},
+    date={June 2014 – Sep 2014},
+    location={Rome, Italy},
+    logo={images/logo/sapienza.jpg},
+    description={
+	110/110  \small\emph{Summa cum Laude}\\
+	Dissertation: \emph{``New Frontiers: Robots Eating Blackberries''}  $|$ \small Advisor: Prof. Name \textsc{Surname}\\
+    }
+}
+
+\sectionspace % Some whitespace between each position
+
+\createposition{
+    company={ALMA MATER STUDIORUM},
+    title={BSc. Automation Engineering},
+    date={June 2014 – Sep 2014},
+    location={Bologna, Italy},
+    logo={images/logo/almamater.png},
+    description={
+	110/110  \small\emph{Summa cum Laude}\\
+	Dissertation: \emph{``New Frontiers: Robots Eating Blackberries''}  $|$ \small Advisor: Prof. Name \textsc{Surname}\\
+    }
+}
+
+\sectionspace % Some whitespace after the section
+
+%------------------------------------------------
+% Awards and Certificates
+%------------------------------------------------
+
+\section{Awards and Certificates} 
+
+\begin{tabular}{rll}
+2014	 & top 52/2500 & KPCB Engineering Fellow\\
+2014	 & 2\textsuperscript{nd} most points & Google Code Jam, Qualification Round\\
+2014	 & 1\textsuperscript{st}/50 & Microsoft Coding Competition, Cornell\\
+2013	 & National & Jump Trading Challenge Finalist\\
+2013 & 7\textsuperscript{th}/120 & CS 3410 Cache Race Bot Tournament \\
+2012 & 2\textsuperscript{nd}/150 & CS 3110 Biannual Intra-Class Bot Tournament \\
+2011 & National & Indian National Mathematics Olympiad (INMO) Finalist \\
+2010 & National & Comp. Soc. of India's National Programming Contest\\
+\end{tabular}
+
+\sectionspace % Some whitespace after the section
+
+%------------------------------------------------
+% Publications
+%------------------------------------------------
+
+\section{Publications} 
+
+\begin{tabular}{rll}
+2014 & top 12\%ile & Tau Beta Pi Engineering Honor Society\\
+2014 & National & The Global Leadership and Education Forum (tGELF)\\
+2012 & National & Golden Key International Honor Society\\
+2012 & National & National Society of Collegiate Scholars\\
+\end{tabular}
+
+\sectionspace % Some whitespace after the section
+
+%----------------------------------------------------------------------------------------
+
+\end{minipage} % The end of the right column
+
+%----------------------------------------------------------------------------------------
+%	SECOND PAGE (EXAMPLE)
+%----------------------------------------------------------------------------------------
+
+%\newpage % Start a new page
+
+%\begin{minipage}[t]{0.33\textwidth} % The left column takes up 33% of the text width of the page
+
+%\section{Example Section}
+
+%\end{minipage} % The end of the left column
+%\hfill
+%\begin{minipage}[t]{0.66\textwidth} % The right column takes up 66% of the text width of the page
+
+%\section{Example Section 2}
+
+%\end{minipage} % The end of the right column
+
+%----------------------------------------------------------------------------------------
+
+\end{document}
