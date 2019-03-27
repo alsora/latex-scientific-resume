@@ -19,6 +19,7 @@
 
 \definecolor{primary}{HTML}{2b2b2b} % The primary document color for content text
 \definecolor{headings}{HTML}{6A6A6A} % The color of the large sections
+%\colorlet{headings}{Sepia}
 \definecolor{subheadings}{HTML}{333333} % The color of subsections and places worked/studied
 \definecolor{date}{HTML}{666666} % The color used for the Last Updated text at the top right
 
@@ -39,6 +40,14 @@
 \setmainfont[Color=primary, Path = fonts/lato/,BoldItalicFont=Lato-RegIta,BoldFont=Lato-Reg,ItalicFont=Lato-LigIta]{Lato-Lig} % The primary font for content text; defines bold, italic and bold-italic as well
 
 \setsansfont[Scale=MatchLowercase,Mapping=tex-text, Path = fonts/raleway/]{Raleway-ExtraLight} % The font used where \sfffamily is called
+
+
+\usepackage{amssymb}
+\usepackage{tikz}
+\newcommand{\cvtag}[1]{%
+  \tikz[baseline]\node[anchor=base,draw=text!30,rounded corners,inner xsep=0.5ex,inner ysep =0.75ex,text height=1.3ex,text depth=.25ex]{#1};
+}
+
 
 %----------------------------------------------------------------------------------------
 %	LAST UPDATED COMMAND
@@ -159,7 +168,16 @@ Last Updated on \today % Last Updated text
   \color{subheadings}\raggedright\scshape\fontspec[Path = fonts/raleway/]{Raleway-Medium}\fontsize{11pt}{13pt}\selectfont { | \mm@title  \\} \normalfont
   
     % new line date and location
-  \color{headings}\raggedright\fontspec[Path = fonts/raleway/]{Raleway-Medium}\fontsize{10pt}{12pt}\selectfont {\mm@date | \mm@location} \normalfont
+  %\ifstrequal{#3}{}{}{{\small\makebox[0.5\linewidth][l]{\faCalendar\hspace{0.5em}#3}}}%
+  %\ifstrequal{#4}{}{}{{\small\makebox[0.5\linewidth][l]{\faMapMarker\hspace{0.5em}#4}}}\par    
+ 
+    
+   \ifthenelse{\equal{\mm@date}{}}{} {{\small\makebox[0.6\linewidth][l]{\faCalendar\hspace{0.5em}\color{headings}\raggedright\fontspec[Path = fonts/raleway/]{Raleway-Medium}\fontsize{10pt}{12pt}\selectfont {\mm@date } \normalfont}}}
+   \ifthenelse{\equal{\mm@location}{}}{} {{\small\makebox[0.3\linewidth][l]{\faMapMarker\hspace{0.5em}\color{headings}\raggedright\fontspec[Path = fonts/raleway/]{Raleway-Medium}\fontsize{10pt}{12pt}\selectfont {\mm@location } \normalfont}}}
+  
+    
+    
+ % \color{headings}\raggedright\fontspec[Path = fonts/raleway/]{Raleway-Medium}\fontsize{10pt}{12pt}\selectfont {\mm@date | \mm@location} \normalfont
   
   
   % new line optional position description
@@ -174,7 +192,10 @@ Last Updated on \today % Last Updated text
 }
 \makeatother
 
+\usepackage{dashrule}
 
+
+\newcommand{\divider}{\color{text!30}{\hdashrule{0.92\linewidth}{0.5pt}{2.15pt}}\medskip}
 
 %----------------------------------------------------------------------------------------
 %	SECTION TITLE STYLING AND SPACING

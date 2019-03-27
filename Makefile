@@ -9,6 +9,9 @@ all:
 	xelatex $(SOURCE)
 	xelatex $(SOURCE)
 
+png:
+	pdftoppm $(TARGET).pdf $(TARGET) -png -f 1 -singlefile
+
 latex:
 	xelatex $(SOURCE)
 	xelatex $(SOURCE)
