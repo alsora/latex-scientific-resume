@@ -14,4 +14,4 @@ make
 
 
 
-<img src="cv.png" alt="Resume example" width="75%" height="75%"/>
+<img src="cv_sample.png" alt="Resume example" width="75%" height="75%"/>
