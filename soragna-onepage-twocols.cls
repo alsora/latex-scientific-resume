@@ -18,30 +18,31 @@
 \usepackage[usenames,dvipsnames]{xcolor} % Required for custom colors
 
 \definecolor{Mulberry}{HTML}{72243D}
-\definecolor{SlateGrey}{HTML}{2E2E2E}
-\definecolor{LightGrey}{HTML}{666666}
-\colorlet{heading}{Sepia}
+\definecolor{SlateGray}{HTML}{2E2E2E}
+\definecolor{LightGray}{HTML}{666666}
+\definecolor{DarkGray}{HTML}{333333}
+
+
 \colorlet{accent}{Mulberry}
-\colorlet{emphasis}{SlateGrey}
-\colorlet{body}{LightGrey}
-
-
-\definecolor{gray17}{HTML}{2b2b2b}
 
 
 
 
-\definecolor{primary}{HTML}{2b2b2b} % The primary document color for content text
-\definecolor{headings}{HTML}{6A6A6A} % The color of the large sections
+\colorlet{primary}{SlateGray}
+\colorlet{headings}{Sepia}
+\colorlet{details}{LightGray}
+
+
+
+%\definecolor{primary}{HTML}{2b2b2b} % The primary document color for content text
+%\definecolor{headings}{HTML}{6A6A6A} % The color of the large sections
 %\colorlet{headings}{Sepia}
 \definecolor{subheadings}{HTML}{333333} % The color of subsections and places worked/studied
 \definecolor{date}{HTML}{666666} % The color used for the Last Updated text at the top right
 
-\definecolor{darkgray}{HTML}{333333}
 \definecolor{gray}{HTML}{5D5D5D}
 \definecolor{lightgray}{HTML}{999999}
 \definecolor{darktext}{HTML}{414141}
-\colorlet{text}{darkgray}
 \colorlet{graytext}{gray}
 \colorlet{lighttext}{lightgray}
 
@@ -62,7 +63,7 @@
 \usepackage{amssymb}
 \usepackage{tikz}
 \newcommand{\cvtag}[1]{%
-  \tikz[baseline]\node[anchor=base,draw=text!30,rounded corners,inner xsep=0.5ex,inner ysep =0.75ex,text height=1.3ex,text depth=.25ex]{#1};
+  \tikz[baseline]\node[anchor=base,draw=DarkGray!30,rounded corners,inner xsep=0.5ex,inner ysep =0.75ex,text height=1.3ex,text depth=.25ex]{#1};
 }
 
 
@@ -78,7 +79,7 @@
 \newcommand{\lastupdated}{ % Create a new command for printing the Last Updated text
 \begin{textblock}{25}(75,2) % The position of the Last Updated text on the page (75% of the page across, 2% down)
 {
-\color{date}\fontspec[Path = fonts/raleway/]{Raleway-ExtraLight}\fontsize{8pt}{10pt}\selectfont % Text styling of the text
+\color{details}\fontspec[Path = fonts/raleway/]{Raleway-ExtraLight}\fontsize{8pt}{10pt}\selectfont % Text styling of the text
 Last Updated on \today % Last Updated text
 }
 \end{textblock}}
@@ -106,25 +107,23 @@ Last Updated on \today % Last Updated text
 
 \centering{ % Center the name
 \fontsize{40pt}{60pt} % Font size
-\fontspec[Path = fonts/lato/]{Lato-Hai}\selectfont \mm@name ~
-\fontspec[Path = fonts/lato/]{Lato-Lig}\selectfont \mm@surname
+\fontspec[Path = fonts/lato/]{Lato-Hai}\selectfont \bfseries \mm@name \thinspace
+\fontspec[Path = fonts/lato/]{Lato-Bol}\selectfont \mm@surname
 } \\[5pt] % Whitespace between the name and contact information
 \centering{ % Center the contact information
-    \color{headings} % Use the headings color
     \fontspec[Path = fonts/raleway/]{Raleway-Medium}\fontsize{11pt}{14pt}\selectfont
     
-    \ifthenelse{\equal{\mm@mail}{}}{} {\faEnvelope ~\href{mailto:\mm@mail}{\mm@mail} ~~}
-    \ifthenelse{\equal{\mm@phone}{}}{} {\faPhone ~ \mm@phone ~~}
-    \ifthenelse{\equal{\mm@website}{}}{} {\faGithub ~ \href{\mm@website}{\mm@website} ~~}
-    \ifthenelse{\equal{\mm@address}{}}{} {\faMapMarker ~ \mm@address ~~}
+    \ifthenelse{\equal{\mm@mail}{}}{} {  {\color{headings} \faEnvelope} ~\href{mailto:\mm@mail}{\mm@mail} ~~}
+    \ifthenelse{\equal{\mm@phone}{}}{} { {\color{headings} \faPhone} ~ \mm@phone ~~}
+    \ifthenelse{\equal{\mm@website}{}}{} { {\color{headings} \faGithub} ~ \href{\mm@website}{\mm@website} ~~}
+    \ifthenelse{\equal{\mm@address}{}}{} { {\color{headings} \faMapMarker} ~ \mm@address ~~}
 
 } % Contact information font
-\noindent\makebox[\linewidth]{\color{headings}\rule{\paperwidth}{0.4pt}} % Horizontal rule
+\noindent\makebox[\linewidth]{\rule{\paperwidth}{0.4pt}} % Horizontal rule
 \vspace{-10pt} % Reduce whitespace after the rule slightly
 
 }
 \makeatother
-
 
 
 %----------------------------------------------------------------------------------------
@@ -138,16 +137,16 @@ Last Updated on \today % Last Updated text
 \newcommand{\sectionspace}{\vspace{8pt}} % Defines a command to add a set amount of space after sections and subsections
 
 \titleformat{\section}{ % Customize the large section titles
-\color{headings}\scshape\fontspec[Path = fonts/lato/]{Lato-Lig}\fontsize{16pt}{24pt}\selectfont \raggedright\uppercase}{}{0em}{}
+\color{headings}\scshape\fontspec[Path = fonts/lato/]{Lato-Bol}\fontsize{16pt}{24pt}\selectfont \raggedright\uppercase}{}{0em}{}
 
 \titleformat{\subsection}{ % Customize the subsections and places worked/studied titles
-\color{subheadings}\fontspec[Path = fonts/lato/]{Lato-Bol}\fontsize{12pt}{12pt}\selectfont\bfseries\uppercase}{}{0em}{}
+\color{DarkGray}\fontspec[Path = fonts/lato/]{Lato-Bol}\fontsize{12pt}{12pt}\selectfont\bfseries\uppercase}{}{0em}{}
 
 \newcommand{\runsubsection}[1]{ % Used for creating subsections where a description is required on the same line
-\color{subheadings}\fontspec[Path = fonts/lato/]{Lato-Bol}\fontsize{12pt}{12pt}\selectfont\bfseries\uppercase {#1} \normalfont}
+\color{DarkGray}\fontspec[Path = fonts/lato/]{Lato-Bol}\fontsize{12pt}{12pt}\selectfont\bfseries\uppercase {#1} \normalfont}
 
 \newcommand{\descript}[1]{ % Used for describing the subsection either on the same line or underneath
-\color{subheadings}\raggedright\scshape\fontspec[Path = fonts/raleway/]{Raleway-Medium}\fontsize{11pt}{13pt}\selectfont {#1 \\} \normalfont}
+\color{DarkGray}\raggedright\scshape\fontspec[Path = fonts/raleway/]{Raleway-Medium}\fontsize{11pt}{13pt}\selectfont {#1 \\} \normalfont}
 
 \newcommand{\location}[1]{ % Used for specifying a duration and/or location under a subsection
 \color{headings}\raggedright\fontspec[Path = fonts/raleway/]{Raleway-Medium}\fontsize{10pt}{12pt}\selectfont {#1\\} \normalfont}
@@ -182,13 +181,13 @@ Last Updated on \today % Last Updated text
     % first minipage for position details and decscription
     \begin{minipage}{0.92\linewidth}  
     % company/university name
-{  \color{subheadings}\fontspec[Path = fonts/lato/]{Lato-Bol}\fontsize{12pt}{12pt}\selectfont\bfseries\uppercase {\mm@company} \normalfont }
+{  \color{DarkGray}\fontspec[Path = fonts/lato/]{Lato-Bol}\fontsize{12pt}{12pt}\selectfont\bfseries\uppercase {\mm@company} \normalfont }
   % same line job title
-{  \color{subheadings}\raggedright\scshape\fontspec[Path = fonts/raleway/]{Raleway-Medium}\fontsize{11pt}{13pt}\selectfont { | \mm@title  \\} \normalfont }
+{  \raggedright\scshape\fontspec[Path = fonts/raleway/]{Raleway-Medium}\fontsize{11pt}{13pt}\selectfont { | {\color{Mulberry}  \mm@title  }\\} \normalfont }
   
     % new line date and location    
-   \ifthenelse{\equal{\mm@date}{}}{} {{\small\makebox[0.6\linewidth][l]{\faCalendar\hspace{0.5em}\color{headings}\raggedright\fontspec[Path = fonts/raleway/]{Raleway-Medium}\fontsize{10pt}{12pt}\selectfont {\mm@date } \normalfont}}}
-   \ifthenelse{\equal{\mm@location}{}}{} {{\small\makebox[0.3\linewidth][l]{\faMapMarker\hspace{0.5em}\color{headings}\raggedright\fontspec[Path = fonts/raleway/]{Raleway-Medium}\fontsize{10pt}{12pt}\selectfont {\mm@location } \normalfont}}}
+   \ifthenelse{\equal{\mm@date}{}}{} {{\small\makebox[0.6\linewidth][l]{\color{details} \faCalendar\hspace{0.5em}\raggedright\fontspec[Path = fonts/raleway/]{Raleway-Medium}\fontsize{10pt}{12pt}\selectfont {\mm@date } \normalfont}}}
+   \ifthenelse{\equal{\mm@location}{}}{} {{\small\makebox[0.3\linewidth][l]{\color{details} \faMapMarker\hspace{0.5em}\raggedright\fontspec[Path = fonts/raleway/]{Raleway-Medium}\fontsize{10pt}{12pt}\selectfont {\mm@location } \normalfont}}}
   
   % new line optional position description
   \mm@description
