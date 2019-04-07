@@ -22,29 +22,15 @@
 \definecolor{LightGray}{HTML}{666666}
 \definecolor{DarkGray}{HTML}{333333}
 
-
-\colorlet{accent}{Mulberry}
-
-
-
-
 \colorlet{primary}{SlateGray}
 \colorlet{headings}{Sepia}
+%\colorlet{headings}{LightGray}
 \colorlet{details}{LightGray}
+\colorlet{jobtitle}{SlateGray}
 
 
 
-%\definecolor{primary}{HTML}{2b2b2b} % The primary document color for content text
-%\definecolor{headings}{HTML}{6A6A6A} % The color of the large sections
-%\colorlet{headings}{Sepia}
-\definecolor{subheadings}{HTML}{333333} % The color of subsections and places worked/studied
-\definecolor{date}{HTML}{666666} % The color used for the Last Updated text at the top right
 
-\definecolor{gray}{HTML}{5D5D5D}
-\definecolor{lightgray}{HTML}{999999}
-\definecolor{darktext}{HTML}{414141}
-\colorlet{graytext}{gray}
-\colorlet{lighttext}{lightgray}
 
 %----------------------------------------------------------------------------------------
 %	FONTS
@@ -112,12 +98,11 @@ Last Updated on \today % Last Updated text
 } \\[5pt] % Whitespace between the name and contact information
 \centering{ % Center the contact information
     \fontspec[Path = fonts/raleway/]{Raleway-Medium}\fontsize{11pt}{14pt}\selectfont
-    
-    \ifthenelse{\equal{\mm@mail}{}}{} {  {\color{headings} \faEnvelope} ~\href{mailto:\mm@mail}{\mm@mail} ~~}
-    \ifthenelse{\equal{\mm@phone}{}}{} { {\color{headings} \faPhone} ~ \mm@phone ~~}
-    \ifthenelse{\equal{\mm@website}{}}{} { {\color{headings} \faGithub} ~ \href{\mm@website}{\mm@website} ~~}
-    \ifthenelse{\equal{\mm@address}{}}{} { {\color{headings} \faMapMarker} ~ \mm@address ~~}
-
+    %\faEnvelope \faPhone  \faGithub  \faMapMarker
+    \ifthenelse{\equal{\mm@mail}{}}{} {  {\color{headings} \raisebox{-0.2em}{\includegraphics[width=1.2em]{images/icons/email.png}} } ~\href{mailto:\mm@mail}{\mm@mail} ~~}
+    \ifthenelse{\equal{\mm@phone}{}}{} { {\color{headings} \raisebox{-0.2em}{\includegraphics[width=1.2em]{images/icons/phone-number.png}} } ~\mm@phone ~~}
+    \ifthenelse{\equal{\mm@address}{}}{} { {\color{headings} \raisebox{-0.2em}{\includegraphics[width=1.2em]{images/icons/map.png}} } ~\mm@address ~~}
+    \ifthenelse{\equal{\mm@website}{}}{} { {\color{headings} \raisebox{-0.2em}{\includegraphics[width=1.2em]{images/icons/github.png}} } ~\href{\mm@website}{\mm@website} ~~}
 } % Contact information font
 \noindent\makebox[\linewidth]{\rule{\paperwidth}{0.4pt}} % Horizontal rule
 \vspace{-10pt} % Reduce whitespace after the rule slightly
@@ -183,7 +168,7 @@ Last Updated on \today % Last Updated text
     % company/university name
 {  \color{DarkGray}\fontspec[Path = fonts/lato/]{Lato-Bol}\fontsize{12pt}{12pt}\selectfont\bfseries\uppercase {\mm@company} \normalfont }
   % same line job title
-{  \raggedright\scshape\fontspec[Path = fonts/raleway/]{Raleway-Medium}\fontsize{11pt}{13pt}\selectfont { | {\color{Mulberry}  \mm@title  }\\} \normalfont }
+{  \raggedright\scshape\fontspec[Path = fonts/raleway/]{Raleway-Medium}\fontsize{11pt}{13pt}\selectfont { | {\color{jobtitle}  \mm@title  }\\} \normalfont }
   
     % new line date and location    
    \ifthenelse{\equal{\mm@date}{}}{} {{\small\makebox[0.6\linewidth][l]{\color{details} \faCalendar\hspace{0.5em}\raggedright\fontspec[Path = fonts/raleway/]{Raleway-Medium}\fontsize{10pt}{12pt}\selectfont {\mm@date } \normalfont}}}
