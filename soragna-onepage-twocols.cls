@@ -8,7 +8,6 @@
 \ProcessOptions\relax
 \LoadClass{article}
 
-\usepackage[hmargin=1.25cm, vmargin=0.75cm]{geometry} % Specifies horizontal and vertical page margins
 \usepackage{hyperref} % Required for links
 
 %----------------------------------------------------------------------------------------
@@ -28,8 +27,11 @@
 \colorlet{details}{LightGray}
 \colorlet{jobtitle}{SlateGray}
 
+%----------------------------------------------------------------------------------------
+%	MARGINS
+%----------------------------------------------------------------------------------------
 
-
+\usepackage[hmargin=0.5cm, vmargin=0.3cm]{geometry} % Specifies horizontal and vertical page margins
 
 
 %----------------------------------------------------------------------------------------
@@ -37,10 +39,10 @@
 %----------------------------------------------------------------------------------------
 
 \usepackage{fontspec} % Required for specifying custom fonts in XeLaTeX
-%Color=primary, 
-\setmainfont[Path = fonts/lato/,BoldItalicFont=Lato-RegIta,BoldFont=Lato-Reg,ItalicFont=Lato-LigIta]{Lato-Lig} % The primary font for content text; defines bold, italic and bold-italic as well
 
-%\setmainfont{Lato}
+%\setmainfont[Path = fonts/lato/,BoldItalicFont=Lato-RegIta,BoldFont=Lato-Reg,ItalicFont=Lato-LigIta]{Lato-Lig} % The primary font for content text; defines bold, italic and bold-italic as well
+
+\setmainfont[Scale=0.75, Path = fonts/roboto_mono/,BoldItalicFont=RobotoMono-MediumItalic,BoldFont=RobotoMono-Medium,ItalicFont=RobotoMono-LightItalic]{RobotoMono-Regular}
 
 
 \setsansfont[Scale=MatchLowercase,Mapping=tex-text, Path = fonts/raleway/]{Raleway-ExtraLight} % The font used where \sfffamily is called
@@ -164,7 +166,7 @@ Last Updated on \today % Last Updated text
   \setkeys{createposition}{company={My Company},title={Engineer of nothing},date={May 2013 - Aug 2013}, location={Russia}, logo={images/logo/mcdonalds}, description={},#1}%
     
     % first minipage for position details and decscription
-    \begin{minipage}{0.92\linewidth}  
+    \begin{minipage}{0.86\linewidth}  
     % company/university name
 {  \color{DarkGray}\fontspec[Path = fonts/lato/]{Lato-Bol}\fontsize{12pt}{12pt}\selectfont\bfseries\uppercase {\mm@company} \normalfont }
   % same line job title
@@ -180,10 +182,9 @@ Last Updated on \today % Last Updated text
   	%
   	%
   	% second minipage for company logo
-  	\begin{minipage}{0.05\linewidth}
-  	% skip some space between text and logo
-  	~~~~~~~~
-  	\ifthenelse{\equal{\mm@logo}{}}{}{\includegraphics[width=1.4cm] {\mm@logo}}
+  	\begin{minipage}{0.15\linewidth}
+  	\ifthenelse{\equal{\mm@logo}{}}{}{\begin{flushright}
+	 \includegraphics[width=1.4cm] {\mm@logo} \end{flushright}}
 	\end{minipage}%
 }
 \makeatother
