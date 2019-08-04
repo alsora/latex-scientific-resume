@@ -294,6 +294,18 @@ Last Updated on \today % Last Updated text
 \newcommand{\divider}{\color{text!30}{\hdashrule{0.92\linewidth}{0.5pt}{2.15pt}}\medskip}
 
 
+%----------------------------------------------------------------------------------------
+%	ITEMS SETTINGS
+%----------------------------------------------------------------------------------------
+
+% Used for entries with a date and a name/description
+\newcommand*{\dateitem}[2]{
+  \begin{tabular}{p{0.08\textwidth} p{0.9\textwidth}}   
+       {#1} & {#2}
+  \end{tabular}
+  %\par\addvspace{#1}
+}
+
 
 %----------------------------------------------------------------------------------------
 %	BIBLIOGRAPHY SETTINGS
@@ -301,7 +313,8 @@ Last Updated on \today % Last Updated text
 
 
 \usepackage{natbib}
-\bibliographystyle{abbrvnat}
+%\bibliographystyle{abbrvnat}
+\bibliographystyle{plainyrrev}
 \renewcommand{\bibsection}{}
 
 
