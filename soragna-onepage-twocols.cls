@@ -153,10 +153,9 @@ Last Updated on \today % Last Updated text
 \centering{ % Center the contact information
     \fontspec[Path = fonts/raleway/]{Raleway-Medium}\fontsize{11pt}{14pt}\selectfont
     %\faEnvelope \faPhone  \faGithub  \faMapMarker
-    \ifthenelse{\equal{\mm@mail}{}}{} {  {\color{headings} \raisebox{-0.2em}{\includegraphics[width=1.2em]{images/icons/email.png}} } ~\href{mailto:\mm@mail}{\mm@mail} ~~}
-    \ifthenelse{\equal{\mm@phone}{}}{} { {\color{headings} \raisebox{-0.2em}{\includegraphics[width=1.2em]{images/icons/phonebook.png}} } ~\mm@phone ~~}
-    \ifthenelse{\equal{\mm@address}{}}{} { {\color{headings} \raisebox{-0.2em}{\includegraphics[width=1.2em]{images/icons/map.png}} } ~\mm@address ~~}
-    \ifthenelse{\equal{\mm@website}{}}{} { {\color{headings} \raisebox{-0.2em}{\includegraphics[width=1.2em]{images/icons/github.png}} } ~\href{\mm@website}{\mm@website} ~~}
+    \ifthenelse{\equal{\mm@mail}{}}{\hphantom{1pt}} {  {\color{headings} \raisebox{-0.2em}{\includegraphics[width=1.2em]{images/icons/email.png}} } ~\href{mailto:\mm@mail}{\mm@mail} ~~}
+    \ifthenelse{\equal{\mm@address}{}}{\hphantom{1pt}} { {\color{headings} \raisebox{-0.2em}{\includegraphics[width=1.2em]{images/icons/map.png}} } ~\mm@address ~~}
+    \ifthenelse{\equal{\mm@website}{}}{\hphantom{1pt}} { {\color{headings} \raisebox{-0.2em}{\includegraphics[width=1.2em]{images/icons/github.png}} } ~\href{https://\mm@website}{\mm@website} ~~}
 } % Contact information font
 \noindent\makebox[\linewidth]{\rule{\paperwidth}{0.4pt}} % Horizontal rule
 \vspace{-10pt} % Reduce whitespace after the rule slightly
@@ -294,6 +293,18 @@ Last Updated on \today % Last Updated text
 \newcommand{\divider}{\color{text!30}{\hdashrule{0.92\linewidth}{0.5pt}{2.15pt}}\medskip}
 
 
+%----------------------------------------------------------------------------------------
+%	ITEMS SETTINGS
+%----------------------------------------------------------------------------------------
+
+% Used for entries with a date and a name/description
+\newcommand*{\dateitem}[2]{
+  \begin{tabular}{p{0.08\textwidth} p{0.9\textwidth}}   
+       {#1} & {#2}
+  \end{tabular}
+  %\par\addvspace{#1}
+}
+
 
 %----------------------------------------------------------------------------------------
 %	BIBLIOGRAPHY SETTINGS
@@ -301,7 +312,8 @@ Last Updated on \today % Last Updated text
 
 
 \usepackage{natbib}
-\bibliographystyle{abbrvnat}
+%\bibliographystyle{abbrvnat}
+\bibliographystyle{plainyrrev}
 \renewcommand{\bibsection}{}
 
 
