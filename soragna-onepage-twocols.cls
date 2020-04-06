@@ -227,7 +227,6 @@ Last Updated on \today % Last Updated text
 } \\[5pt] % Whitespace between the name and contact information
 \centering{ % Center the contact information
     \fontspec[Path = fonts/raleway/]{Raleway-Medium}\fontsize{11pt}{14pt}\selectfont
-    %\faEnvelope \faPhone  \faGithub  \faMapMarker
     \ifthenelse{\equal{\mm@mail}{}}{\hphantom{1pt}} { \emailicon ~\href{mailto:\mm@mail}{\mm@mail} ~~}
     \ifthenelse{\equal{\mm@phone}{}}{\hphantom{1pt}} { \phoneicon ~\mm@phone ~~}
     \ifthenelse{\equal{\mm@address}{}}{\hphantom{1pt}} { \mapicon ~\mm@address ~~}
