@@ -12,15 +12,18 @@
 \colorlet{primary}{SlateGray}
 
 % color used for all section headers
+% options: Orange, Sepia, LightGray
 \colorlet{headings}{Orange}
-%\colorlet{headings}{Sepia}
 
+% font used for main text
 % options: Lato, Roboto, Roboto_mono
 \choosefont{Roboto}
 
+% icons style for title and sections
 % options: fontawesome, freepik, or leave it empty
 \chooseiconset{freepik}
 
+% use or not logo for positions (schools and companies)
 % options: true or leave it empty
 \usepositionlogos{true}
 
@@ -58,7 +61,7 @@
 % About Me
 %------------------------------------------------
 
-\section{About Me  \aboutmeicon} 
+\leftsection{About Me}{\aboutmeicon}
 
 Current Co-founder \& Software Engineer in start-up company PLAT Corp. 
 5+ years experience specializing in backend/infrastructure, web development and computer security. 
@@ -71,18 +74,20 @@ Interested in devising a better problem-solving method for challenging tasks, an
 % Languages
 %------------------------------------------------
 
-\section{Languages \languagesicon} 
+\leftsection{Languages}{\languagesicon}
 
 \languageskill{Italian}{Mothertongue}{images/flag/italy.png}
 \languageskill{English}{Professional proficiency}{images/flag/united-states.png}
 \languageskill{Chinese}{Basic spoken}{images/flag/china.png}
 
+\vspace{-5mm} % For some reason there is a big space between this section and the following, so reduce it
 \sectionspace % Some whitespace after the section
 
+%------------------------------------------------
 % Skills
 %------------------------------------------------
 
-\section{Skills \technicalskillsicon }
+\leftsection{Skills}{\technicalskillsicon}
 
 \subsection{Tech skills}
 
@@ -106,14 +111,14 @@ Communicator\\
 
 %----------------------------------------------------------------------------------------
 
-
-
 \end{minipage} % The end of the left column
 \hfill
+%
 %
 %----------------------------------------------------------------------------------------
 %	RIGHT COLUMN
 %----------------------------------------------------------------------------------------
+%
 %
 \begin{minipage}[t]{0.66\textwidth} % The right column takes up 66% of the text width of the page
 
@@ -121,9 +126,7 @@ Communicator\\
 % Experience
 %------------------------------------------------
 
-\section{Experience  \rightcolumnicon{\experienceicon}}
-
-%------------------------------------------------
+\rightsection{Experience}{\experienceicon}
 
 \createposition{
     company={COURSERA},
@@ -168,8 +171,7 @@ Placeholder text designed to have exactly three lines. Three lines describing wh
 % Education
 %------------------------------------------------
 
-\section{Education \rightcolumnicon{\educationicon}}
-
+\rightsection{Education}{\educationicon}
 
 \createposition{
     company={LA SAPIENZA},
@@ -205,7 +207,7 @@ Placeholder text designed to have exactly three lines. Three lines describing wh
 % Awards and Certificates
 %------------------------------------------------
 
-\section{Awards and Certificates \rightcolumnicon{\awardscertificatesicon} }
+\rightsection{Awards and Certificates}{\awardscertificatesicon}
 
 \dateitem{2014}{KPCB Engineering Fellow}
 \dateitem{2014}{Google Code Jam, Qualification Round}
@@ -218,7 +220,7 @@ Placeholder text designed to have exactly three lines. Three lines describing wh
 % Publications
 %------------------------------------------------
 
-\section{Publications \rightcolumnicon{\publicationsicon} }
+\rightsection{Publications}{\publicationsicon}
 
 % use minipage as for experience and education
 \begin{minipage}{0.86\linewidth} 
@@ -232,7 +234,6 @@ Placeholder text designed to have exactly three lines. Three lines describing wh
 %----------------------------------------------------------------------------------------
 
 \end{minipage} % The end of the right column
-
 
 %----------------------------------------------------------------------------------------
 

@@ -127,9 +127,6 @@ ItalicFont=RobotoMono-LightItalic]
 %\scalebox{1.5}
 %\adjustbox{height=\titlefontsize ,keepaspectratio}
 
-% aligns icons in the right column with the company/position logos
-\newcommand{\rightcolumnicon}[1]{ {#1 \hspace{\logowidth}} }
-
 \newcommand{\chooseiconset}[1]{
 	\ifthenelse{\equal{#1}{fontawesome}}
     {
@@ -242,13 +239,17 @@ Last Updated on \today % Last Updated text
 %	SECTION TITLE STYLING AND SPACING
 %----------------------------------------------------------------------------------------
 
+% Wrapper commands to be used for sections on the left or right column
+\newcommand{\leftsection}[2]{\section{#1 #2}}
+% Aligns icons in the right column with the company/position logos
+\newcommand{\rightsection}[2]{\section{#1 {#2 \hspace{\logowidth}}}}
+
 \usepackage{titlesec} % Required for customizing section/subsection/etc titles
 
 % Removes the spacing around the main section titles
 \titlespacing{\section}{0pt}{0pt}{0pt}
 % Removes the spacing around the subsections
 \titlespacing{\subsection}{0pt}{0pt}{0pt}
-
 
 \newcommand{\titlefontsize}{20pt}
 \newcommand{\titlefontbaselineskip}{25pt} %1.2 x size
