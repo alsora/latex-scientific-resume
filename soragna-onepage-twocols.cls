@@ -52,7 +52,6 @@
 
 \usepackage[hmargin=0.5cm, vmargin=0.5cm]{geometry} % Specifies horizontal and vertical page margins
 
-
 %----------------------------------------------------------------------------------------
 %	FONTS
 %----------------------------------------------------------------------------------------
@@ -106,6 +105,82 @@ ItalicFont=RobotoMono-LightItalic]
   \tikz[baseline]\node[anchor=base,draw=DarkGray!30,rounded corners,inner xsep=0.5ex,inner ysep =0.75ex,text height=1.3ex,text depth=.25ex]{#1};
 }
 
+%----------------------------------------------------------------------------------------
+%	ENABLE / DISABLE POSITION LOGOS
+%----------------------------------------------------------------------------------------
+
+\newcommand{\usepositionlogos}[1]{
+	\ifthenelse{\equal{#1}{true}}
+	{
+		\newcommand{\positionwidth}{0.86\linewidth}
+		\newcommand{\logowidth}{0.15\linewidth}
+	}
+	{
+		\newcommand{\positionwidth}{\linewidth}
+		\newcommand{\logowidth}{0mm}
+	}
+}
+
+%----------------------------------------------------------------------------------------
+%	ICON SET CHOICE
+%----------------------------------------------------------------------------------------
+%\scalebox{1.5}
+%\adjustbox{height=\titlefontsize ,keepaspectratio}
+
+% aligns icons in the right column with the company/position logos
+\newcommand{\rightcolumnicon}[1]{ {#1 \hspace{\logowidth}} }
+
+\newcommand{\chooseiconset}[1]{
+	\ifthenelse{\equal{#1}{fontawesome}}
+    {
+    	\DeclareRobustCommand{\aboutmeicon}				{\hfill\scalebox{1}{\mbox{\faUser}}}
+		\DeclareRobustCommand{\technicalskillsicon}		{\hfill\scalebox{1}{\mbox{\faCogs}}}
+		\DeclareRobustCommand{\languagesicon}			{\hfill\scalebox{1}{\mbox{\faLanguage}}}
+		\DeclareRobustCommand{\experienceicon}			{\hfill\scalebox{1}{\mbox{\faSuitcase}}}
+		\DeclareRobustCommand{\educationicon}			{\hfill\scalebox{1}{\mbox{\faGraduationCap}}}
+		\DeclareRobustCommand{\awardscertificatesicon}	{\hfill\scalebox{1}{\mbox{\faTrophy}}}
+		\DeclareRobustCommand{\publicationsicon}		{\hfill\scalebox{1}{\mbox{\faBook}}}
+
+		\DeclareRobustCommand{\emailicon}				{{\color{headings} \faEnvelope}}
+		\DeclareRobustCommand{\phoneicon}				{{\color{headings} \faPhone}}
+		\DeclareRobustCommand{\githubicon}				{{\color{headings} \faGithub}}
+		\DeclareRobustCommand{\mapicon}					{{\color{headings} \faMapMarker}}
+    }
+    {
+    	\ifthenelse{\equal{#1}{freepik}}
+    	{
+    		\DeclareRobustCommand{\aboutmeicon}				{\hfill\scalebox{1}{\mbox{\includegraphics[width=1em]{images/icons/boss.png}}}}
+    		\DeclareRobustCommand{\technicalskillsicon}		{\hfill\scalebox{1}{\mbox{\includegraphics[width=1em]{images/icons/tools.png}}}}
+    		\DeclareRobustCommand{\languagesicon}			{\hfill\scalebox{1}{\mbox{\includegraphics[width=1em]{images/icons/translator.png}}}}    	
+    		\DeclareRobustCommand{\experienceicon}			{\hfill\scalebox{1}{\mbox{\includegraphics[width=1em]{images/icons/briefcase.png}}}}
+    		\DeclareRobustCommand{\educationicon}			{\hfill\scalebox{1}{\mbox{\includegraphics[width=1em]{images/icons/open-book.png}}}}
+    		\DeclareRobustCommand{\awardscertificatesicon}	{\hfill\scalebox{1}{\mbox{\includegraphics[width=1em]{images/icons/quality.png}}}}
+    		\DeclareRobustCommand{\publicationsicon}		{\hfill\scalebox{1}{\mbox{\includegraphics[width=1em]{images/icons/plan.png}}}}
+
+			\DeclareRobustCommand{\emailicon}				{\raisebox{-0.2em}{\includegraphics[width=1.2em]{images/icons/email.png}}}
+			\DeclareRobustCommand{\phoneicon}				{\raisebox{-0.2em}{\includegraphics[width=1.2em]{images/icons/phonebook.png}}}
+			\DeclareRobustCommand{\githubicon}				{\raisebox{-0.2em}{\includegraphics[width=1.2em]{images/icons/github.png}}}
+			\DeclareRobustCommand{\mapicon}					{\raisebox{-0.2em}{\includegraphics[width=1.2em]{images/icons/map.png}}}
+    	}
+    	{
+			% empty icons if nothing is selected
+			\DeclareRobustCommand{\aboutmeicon}{}
+			\DeclareRobustCommand{\technicalskillsicon}{}
+			\DeclareRobustCommand{\languagesicon}{}
+			\DeclareRobustCommand{\experienceicon}{}
+			\DeclareRobustCommand{\educationicon}{}
+			\DeclareRobustCommand{\awardscertificatesicon}{}
+			\DeclareRobustCommand{\publicationsicon}{}
+
+			\DeclareRobustCommand{\emailicon}{}
+			\DeclareRobustCommand{\phoneicon}{}
+			\DeclareRobustCommand{\githubicon}{}
+			\DeclareRobustCommand{\mapicon}{}
+    	}
+    }
+}
+
+
 
 
 %----------------------------------------------------------------------------------------
@@ -153,18 +228,16 @@ Last Updated on \today % Last Updated text
 \centering{ % Center the contact information
     \fontspec[Path = fonts/raleway/]{Raleway-Medium}\fontsize{11pt}{14pt}\selectfont
     %\faEnvelope \faPhone  \faGithub  \faMapMarker
-    \ifthenelse{\equal{\mm@mail}{}}{\hphantom{1pt}} {  {\color{headings} \raisebox{-0.2em}{\includegraphics[width=1.2em]{images/icons/email.png}} } ~\href{mailto:\mm@mail}{\mm@mail} ~~}
-    \ifthenelse{\equal{\mm@phone}{}}{\hphantom{1pt}} { {\color{headings} \raisebox{-0.2em}{\includegraphics[width=1.2em]{images/icons/phonebook.png}} } ~\mm@phone ~~}
-    \ifthenelse{\equal{\mm@address}{}}{\hphantom{1pt}} { {\color{headings} \raisebox{-0.2em}{\includegraphics[width=1.2em]{images/icons/map.png}} } ~\mm@address ~~}
-    \ifthenelse{\equal{\mm@website}{}}{\hphantom{1pt}} { {\color{headings} \raisebox{-0.2em}{\includegraphics[width=1.2em]{images/icons/github.png}} } ~\href{\mm@website}{\mm@website} ~~}
+    \ifthenelse{\equal{\mm@mail}{}}{\hphantom{1pt}} { \emailicon ~\href{mailto:\mm@mail}{\mm@mail} ~~}
+    \ifthenelse{\equal{\mm@phone}{}}{\hphantom{1pt}} { \phoneicon ~\mm@phone ~~}
+    \ifthenelse{\equal{\mm@address}{}}{\hphantom{1pt}} { \mapicon ~\mm@address ~~}
+    \ifthenelse{\equal{\mm@website}{}}{\hphantom{1pt}} { \githubicon ~\href{\mm@website}{\mm@website} ~~}
 } % Contact information font
 \noindent\makebox[\linewidth]{\rule{\paperwidth}{0.4pt}} % Horizontal rule
 \vspace{-10pt} % Reduce whitespace after the rule slightly
 
 }
 \makeatother
-
-
 
 %----------------------------------------------------------------------------------------
 %	SECTION TITLE STYLING AND SPACING
@@ -197,50 +270,6 @@ Last Updated on \today % Last Updated text
 % Defines a command to add a set amount of space after sections and subsections
 \newcommand{\sectionspace}{\vspace{8pt}}
 
-
-%----------------------------------------------------------------------------------------
-%	ICON SET CHOICE
-%----------------------------------------------------------------------------------------
-%\scalebox{1.5}
-%\adjustbox{height=\titlefontsize ,keepaspectratio}
-
-
-\newcommand{\chooseiconset}[1]{
-	\ifthenelse{\equal{#1}{fontawesome}}
-    {
-    	\DeclareRobustCommand{\aboutmeicon}{\hfill\scalebox{1}{\mbox{\faUser}}}
-		\DeclareRobustCommand{\technicalskillsicon}{\hfill\scalebox{1}{\mbox{\faCogs}}}
-		\DeclareRobustCommand{\languagesicon}{\hfill\scalebox{1}{\mbox{\faLanguage}}}
-		\DeclareRobustCommand{\experienceicon}{\hfill\scalebox{1}{\mbox{\faSuitcase}}\hspace{0.15\linewidth}}
-		\DeclareRobustCommand{\educationicon}{\hfill\scalebox{1}{\mbox{\faGraduationCap}}\hspace{0.15\linewidth}}
-		\DeclareRobustCommand{\awardscertificatesicon}{\hfill\scalebox{1}{\mbox{\faTrophy}}\hspace{0.15\linewidth}}
-		\DeclareRobustCommand{\publicationsicon}{\hfill\scalebox{1}{\mbox{\faBook}}\hspace{0.15\linewidth}}
-    }
-    {
-    	\ifthenelse{\equal{#1}{freepik}}
-    	{
-    		\DeclareRobustCommand{\aboutmeicon}{\hfill\scalebox{1}{\mbox{\includegraphics[width=1em]{images/icons/boss.png}}}}
-    		\DeclareRobustCommand{\technicalskillsicon}{\hfill\scalebox{1}{\mbox{\includegraphics[width=1em]{images/icons/tools.png}}}}
-    		\DeclareRobustCommand{\languagesicon}{\hfill\scalebox{1}{\mbox{\includegraphics[width=1em]{images/icons/translator.png}}}}    	
-    		\DeclareRobustCommand{\experienceicon}{\hfill\scalebox{1}{\mbox{\includegraphics[width=1em]{images/icons/briefcase.png}}}\hspace{0.15\linewidth}}
-    		\DeclareRobustCommand{\educationicon}{\hfill\scalebox{1}{\mbox{\includegraphics[width=1em]{images/icons/open-book.png}}}\hspace{0.15\linewidth}}
-    		\DeclareRobustCommand{\awardscertificatesicon}{\hfill\scalebox{1}{\mbox{\includegraphics[width=1em]{images/icons/quality.png}}}\hspace{0.15\linewidth}}
-    		\DeclareRobustCommand{\publicationsicon}{\hfill\scalebox{1}{\mbox{\includegraphics[width=1em]{images/icons/plan.png}}}\hspace{0.15\linewidth}}    	
-    	}
-    	{
-    	\DeclareRobustCommand{\aboutmeicon}{}
-		\DeclareRobustCommand{\technicalskillsicon}{}
-		\DeclareRobustCommand{\languagesicon}{}
-		\DeclareRobustCommand{\experienceicon}{}
-		\DeclareRobustCommand{\educationicon}{}
-		\DeclareRobustCommand{\awardscertificatesicon}{}
-		\DeclareRobustCommand{\publicationsicon}{}
-    	}
-    }
-}
-
-
-
 %----------------------------------------------------------------------------------------
 %	CREATE POSITION
 %----------------------------------------------------------------------------------------
@@ -255,34 +284,37 @@ Last Updated on \today % Last Updated text
 \define@key{createposition}{location}{\def\mm@location{#1}}
 \define@key{createposition}{logo}{\def\mm@logo{#1}}
 \define@key{createposition}{description}{\def\mm@description{#1}}
-\DeclareDocumentCommand{\createposition}{m}{%
-  % ========= KEY DEFAULTS + new ones =========
-  \setkeys{createposition}{company={My Company},title={Engineer of nothing},date={May 2013 - Aug 2013}, location={Russia}, logo={images/logo/mcdonalds}, description={},#1}%
+\DeclareDocumentCommand{\createposition}{m}%
+{%
+	% key defaults + new ones
+	\setkeys{createposition}{company={My Company},title={Engineer of nothing},date={May 2013 - Aug 2013}, location={Russia}, logo={images/logo/mcdonalds}, description={},#1}%
     
     % first minipage for position details and decscription
-    \begin{minipage}{0.86\linewidth}  
-    % company/university name
-{  \color{DarkGray}\fontspec[Path = fonts/caviar_dreams/]{CaviarDreams_Bold}\fontsize{12pt}{12pt}\selectfont\bfseries\uppercase {\mm@company} \normalfont}
-  % same line job title
-{  \raggedright\scshape\fontspec[Path = fonts/caviar_dreams/]{CaviarDreams_Bold}\fontsize{11pt}{13pt}\selectfont { ~|~~ {\color{jobtitle}  \mm@title  }\\} \normalfont}
-%{ \scshape\fontspec[Path = fonts/caviar_dreams/]{CaviarDreams_Bold}\fontsize{11pt}{13pt}\selectfont { {\color{jobtitle}  \mm@title  ~~~}} \normalfont}
-%{\color{DarkGray}\fontspec[Path = fonts/lato/]{Lato-Bol}\fontsize{12pt}{12pt}\selectfont\bfseries\uppercase {\mm@company} \normalfont}
-  % same line job title
-  
-    % new line date and location    
-   \ifthenelse{\equal{\mm@date}{}}{} {{\small\makebox[0.6\linewidth][l]{\color{details} \faCalendar\hspace{0.5em}\raggedright\fontspec[Path = fonts/raleway/]{Raleway-Medium}\fontsize{10pt}{12pt}\selectfont {\mm@date } \normalfont}}}
-   \ifthenelse{\equal{\mm@location}{}}{} {{\small\makebox[0.3\linewidth][l]{\color{details} \faMapMarker\hspace{0.5em}\raggedright\fontspec[Path = fonts/raleway/]{Raleway-Medium}\fontsize{10pt}{12pt}\selectfont {\mm@location } \normalfont}}}
-  
-  % new line optional position description
-  \mm@description
+    \begin{minipage}{\positionwidth}  
+		% company/university name
+		{  \color{DarkGray}\fontspec[Path = fonts/caviar_dreams/]{CaviarDreams_Bold}\fontsize{12pt}{12pt}\selectfont\bfseries\uppercase {\mm@company} \normalfont}
+		% same line job title
+		{  \raggedright\scshape\fontspec[Path = fonts/caviar_dreams/]{CaviarDreams_Bold}\fontsize{11pt}{13pt}\selectfont { ~|~~ {\color{jobtitle}  \mm@title  }\\} \normalfont}
+	
+		% new line date and location    
+		\ifthenelse{\equal{\mm@date}{}}{} {{\small\makebox[0.6\linewidth][l]{\color{details} \faCalendar\hspace{0.5em}\raggedright\fontspec[Path = fonts/raleway/]{Raleway-Medium}\fontsize{10pt}{12pt}\selectfont {\mm@date } \normalfont}}}
+		\ifthenelse{\equal{\mm@location}{}}{} {{\small\makebox[0.3\linewidth][l]{\color{details} \faMapMarker\hspace{0.5em}\raggedright\fontspec[Path = fonts/raleway/]{Raleway-Medium}\fontsize{10pt}{12pt}\selectfont {\mm@location } \normalfont}}}
+	
+		% new line optional position description
+		\mm@description
   	\end{minipage}%
   	%
   	%
-  	% second minipage for company logo
-  	\begin{minipage}{0.15\linewidth}
-  	\ifthenelse{\equal{\mm@logo}{}}{}{\begin{flushright}
-	 \includegraphics[width=1.4cm] {\mm@logo} \end{flushright}}
-	\end{minipage}%
+  	% second optional minipage for company logo if logo width > 0
+	\ifthenelse{\lengthtest{\logowidth > 1mm}}
+	{%
+		\begin{minipage}{\logowidth}
+			\ifthenelse{\equal{\mm@logo}{}}
+			{}
+			{ \begin{flushright} \includegraphics[width=1.4cm] {\mm@logo} \end{flushright} }
+		\end{minipage}
+	}
+	{}
 }
 \makeatother
 
@@ -326,8 +358,6 @@ Last Updated on \today % Last Updated text
 %\bibliographystyle{abbrvnat}
 \bibliographystyle{plainyrrev}
 \renewcommand{\bibsection}{}
-
-
 
 
 
