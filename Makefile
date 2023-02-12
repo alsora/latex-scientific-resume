@@ -2,19 +2,20 @@
 
 TARGET=cv_sample
 SOURCE=$(TARGET).tex
+LATEX=lualatex
 
 all:
-	xelatex $(SOURCE)
+	$(LATEX) $(SOURCE)
 	bibtex $(TARGET)
-	xelatex $(SOURCE)
-	xelatex $(SOURCE)
+	$(LATEX) $(SOURCE)
+	$(LATEX) $(SOURCE)
 
 png:
 	pdftoppm $(TARGET).pdf $(TARGET) -png -f 1 -singlefile
 
 latex:
-	xelatex $(SOURCE)
-	xelatex $(SOURCE)
+	$(LATEX) $(SOURCE)
+	$(LATEX) $(SOURCE)
 
 bibtex:
 	bibtex $(TARGET)
