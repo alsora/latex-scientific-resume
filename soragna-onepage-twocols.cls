@@ -317,6 +317,18 @@ Last Updated on \today % Last Updated text
   %\par\addvspace{#1}
 }
 
+%----------------------------------------------------------------------------------------
+%	ITEMS SETTINGS
+%----------------------------------------------------------------------------------------
+
+% Used for entries with a date and a name/description
+\newcommand*{\dateitem}[2]{
+  \begin{tabular}{p{0.08\textwidth} p{0.9\textwidth}}   
+       {#1} & {#2}
+  \end{tabular}
+  %\par\addvspace{#1}
+}
+
 
 %----------------------------------------------------------------------------------------
 %	BIBLIOGRAPHY SETTINGS
