@@ -16,9 +16,7 @@
 \usepackage{graphicx}
 
 \usepackage{ifthen}
-
 \usepackage{xstring}
-
 
 % useful for multiline comments
 \newcommand{\comment}[1]{}
@@ -124,8 +122,6 @@ ItalicFont=RobotoMono-LightItalic]
 %----------------------------------------------------------------------------------------
 %	ICON SET CHOICE
 %----------------------------------------------------------------------------------------
-%\scalebox{1.5}
-%\adjustbox{height=\titlefontsize ,keepaspectratio}
 
 \newcommand{\chooseiconset}[1]{
 	\ifthenelse{\equal{#1}{fontawesome}}
@@ -177,9 +173,6 @@ ItalicFont=RobotoMono-LightItalic]
     }
 }
 
-
-
-
 %----------------------------------------------------------------------------------------
 %	LAST UPDATED COMMAND
 %----------------------------------------------------------------------------------------
@@ -212,26 +205,25 @@ Last Updated on \today % Last Updated text
 \define@key{headersection}{mail}{\def\mm@mail{#1}}
 \define@key{headersection}{address}{\def\mm@address{#1}}
 \define@key{headersection}{birth}{\def\mm@birth{#1}}
-
-\DeclareDocumentCommand{\headersection}{m}{%
-  % ========= KEY DEFAULTS + new ones =========
-  \setkeys{headersection}{name={Name}, surname={Surname}, phone={+1 000 0000000}, mail={yahoo@gmail.com}, website={https://www.whitehouse.gov/}, address={Address}, birth={25 December 2018},#1}%
-
-\centering{ % Center the name
-\fontsize{40pt}{60pt} % Font size
-\fontspec[Path = fonts/lato/]{Lato-Hai}\selectfont \bfseries \mm@name \thinspace
-\fontspec[Path = fonts/lato/]{Lato-Bol}\selectfont \mm@surname
-} \\[5pt] % Whitespace between the name and contact information
-\centering{ % Center the contact information
-    \fontspec[Path = fonts/raleway/]{Raleway-Medium}\fontsize{11pt}{14pt}\selectfont
-    \ifthenelse{\equal{\mm@mail}{}}{\hphantom{1pt}} { \emailicon ~\href{mailto:\mm@mail}{\mm@mail} ~~}
-    \ifthenelse{\equal{\mm@phone}{}}{\hphantom{1pt}} { \phoneicon ~\mm@phone ~~}
-    \ifthenelse{\equal{\mm@address}{}}{\hphantom{1pt}} { \mapicon ~\mm@address ~~}
-    \ifthenelse{\equal{\mm@website}{}}{\hphantom{1pt}} { \githubicon ~\href{\mm@website}{\mm@website} ~~}
-} % Contact information font
-\noindent\makebox[\linewidth]{\rule{\paperwidth}{0.4pt}} % Horizontal rule
-\vspace{-10pt} % Reduce whitespace after the rule slightly
-
+\DeclareDocumentCommand{\headersection}{m}
+{%
+	% key defaults + new ones
+  	\setkeys{headersection}{name={Name}, surname={Surname}, phone={+1 000 0000000}, mail={yahoo@gmail.com}, website={https://www.whitehouse.gov/}, address={Address}, birth={25 December 2018},#1}%
+	\centering{ % Center the name
+		\fontsize{40pt}{60pt} % Font size
+		\fontspec[Path = fonts/lato/]{Lato-Hai}\selectfont \bfseries \mm@name \thinspace
+		\fontspec[Path = fonts/lato/]{Lato-Bol}\selectfont \mm@surname
+	}%
+	\\[5pt] % Whitespace between the name and contact information
+	\centering{ % Center the contact information
+		\fontspec[Path = fonts/raleway/]{Raleway-Medium}\fontsize{11pt}{14pt}\selectfont
+		\ifthenelse{\equal{\mm@mail}{}}{\hphantom{1pt}} { \emailicon ~\href{mailto:\mm@mail}{\mm@mail} ~~}
+		\ifthenelse{\equal{\mm@phone}{}}{\hphantom{1pt}} { \phoneicon ~\mm@phone ~~}
+		\ifthenelse{\equal{\mm@address}{}}{\hphantom{1pt}} { \mapicon ~\mm@address ~~}
+		\ifthenelse{\equal{\mm@website}{}}{\hphantom{1pt}} { \githubicon ~\href{\mm@website}{\mm@website} ~~}
+	} % Contact information font
+	\noindent\makebox[\linewidth]{\rule{\paperwidth}{0.4pt}} % Horizontal rule
+	\vspace{-10pt} % Reduce whitespace after the rule slightly
 }
 \makeatother
 
@@ -271,7 +263,7 @@ Last Updated on \today % Last Updated text
 \newcommand{\sectionspace}{\vspace{8pt}}
 
 %----------------------------------------------------------------------------------------
-%	CREATE POSITION
+%	CREATE POSITION COMMAND
 %----------------------------------------------------------------------------------------
 
 % define the \createposition command, used for listing work experiences and education entries
@@ -353,12 +345,7 @@ Last Updated on \today % Last Updated text
 %	BIBLIOGRAPHY SETTINGS
 %----------------------------------------------------------------------------------------
 
-
 \usepackage{natbib}
 %\bibliographystyle{abbrvnat}
 \bibliographystyle{plainyrrev}
 \renewcommand{\bibsection}{}
-
-
-
-
