@@ -587,14 +587,14 @@ FUNCTION {format.incoll.inproc.crossref}
 
 FUNCTION {article}
 { output.bibitem
-  format.authors "author" output.check
-  new.block
   format.title "title" output.check
+  new.block
+  format.authors emphasize "author" output.check
   new.block
   crossref missing$
     { journal emphasize "journal" output.check
       format.vol.num.pages output
-      format.date "year" output.check
+      %format.date emphasize "year" output.check % Removed date as it's already on the side
     }
     { format.article.crossref output.nonnull
       format.pages output
