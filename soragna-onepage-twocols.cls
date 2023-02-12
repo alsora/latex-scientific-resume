@@ -23,7 +23,6 @@
 
 \colorlet{primary}{SlateGray}
 \colorlet{headings}{Sepia}
-%\colorlet{headings}{LightGray}
 \colorlet{details}{LightGray}
 \colorlet{jobtitle}{SlateGray}
 
@@ -31,7 +30,7 @@
 %	MARGINS
 %----------------------------------------------------------------------------------------
 
-\usepackage[hmargin=0.5cm, vmargin=0.3cm]{geometry} % Specifies horizontal and vertical page margins
+\usepackage[hmargin=0.5cm, vmargin=0.5cm]{geometry} % Specifies horizontal and vertical page margins
 
 
 %----------------------------------------------------------------------------------------
@@ -40,9 +39,10 @@
 
 \usepackage{fontspec} % Required for specifying custom fonts in XeLaTeX
 
-%\setmainfont[Path = fonts/lato/,BoldItalicFont=Lato-RegIta,BoldFont=Lato-Reg,ItalicFont=Lato-LigIta]{Lato-Lig} % The primary font for content text; defines bold, italic and bold-italic as well
+% The primary font for content text; defines bold, italic and bold-italic as well
+\setmainfont[Path = fonts/lato/,BoldItalicFont=Lato-RegIta,BoldFont=Lato-Reg,ItalicFont=Lato-LigIta]{Lato-Lig}
 
-\setmainfont[Scale=0.75, Path = fonts/roboto_mono/,BoldItalicFont=RobotoMono-MediumItalic,BoldFont=RobotoMono-Medium,ItalicFont=RobotoMono-LightItalic]{RobotoMono-Regular}
+%\setmainfont[Scale=0.75, Path = fonts/roboto_mono/,BoldItalicFont=RobotoMono-MediumItalic,BoldFont=RobotoMono-Medium,ItalicFont=RobotoMono-LightItalic]{RobotoMono-Regular}
 
 
 \setsansfont[Scale=MatchLowercase,Mapping=tex-text, Path = fonts/raleway/]{Raleway-ExtraLight} % The font used where \sfffamily is called
@@ -102,7 +102,7 @@ Last Updated on \today % Last Updated text
     \fontspec[Path = fonts/raleway/]{Raleway-Medium}\fontsize{11pt}{14pt}\selectfont
     %\faEnvelope \faPhone  \faGithub  \faMapMarker
     \ifthenelse{\equal{\mm@mail}{}}{} {  {\color{headings} \raisebox{-0.2em}{\includegraphics[width=1.2em]{images/icons/email.png}} } ~\href{mailto:\mm@mail}{\mm@mail} ~~}
-    \ifthenelse{\equal{\mm@phone}{}}{} { {\color{headings} \raisebox{-0.2em}{\includegraphics[width=1.2em]{images/icons/phone-number.png}} } ~\mm@phone ~~}
+    \ifthenelse{\equal{\mm@phone}{}}{} { {\color{headings} \raisebox{-0.2em}{\includegraphics[width=1.2em]{images/icons/phonebook.png}} } ~\mm@phone ~~}
     \ifthenelse{\equal{\mm@address}{}}{} { {\color{headings} \raisebox{-0.2em}{\includegraphics[width=1.2em]{images/icons/map.png}} } ~\mm@address ~~}
     \ifthenelse{\equal{\mm@website}{}}{} { {\color{headings} \raisebox{-0.2em}{\includegraphics[width=1.2em]{images/icons/github.png}} } ~\href{\mm@website}{\mm@website} ~~}
 } % Contact information font
@@ -168,9 +168,9 @@ Last Updated on \today % Last Updated text
     % first minipage for position details and decscription
     \begin{minipage}{0.86\linewidth}  
     % company/university name
-{  \color{DarkGray}\fontspec[Path = fonts/lato/]{Lato-Bol}\fontsize{12pt}{12pt}\selectfont\bfseries\uppercase {\mm@company} \normalfont }
+{  \color{DarkGray}\fontspec[Path = fonts/lato/]{Lato-Bol}\fontsize{12pt}{12pt}\selectfont\bfseries\uppercase {\mm@company} \normalfont}
   % same line job title
-{  \raggedright\scshape\fontspec[Path = fonts/raleway/]{Raleway-Medium}\fontsize{11pt}{13pt}\selectfont { | {\color{jobtitle}  \mm@title  }\\} \normalfont }
+{  \raggedright\scshape\fontspec[Path = fonts/raleway/]{Raleway-Medium}\fontsize{11pt}{13pt}\selectfont { ~|~~ {\color{jobtitle}  \mm@title  }\\} \normalfont}
   
     % new line date and location    
    \ifthenelse{\equal{\mm@date}{}}{} {{\small\makebox[0.6\linewidth][l]{\color{details} \faCalendar\hspace{0.5em}\raggedright\fontspec[Path = fonts/raleway/]{Raleway-Medium}\fontsize{10pt}{12pt}\selectfont {\mm@date } \normalfont}}}
