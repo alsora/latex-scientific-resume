@@ -154,8 +154,9 @@ Last Updated on \today % Last Updated text
     \fontspec[Path = fonts/raleway/]{Raleway-Medium}\fontsize{11pt}{14pt}\selectfont
     %\faEnvelope \faPhone  \faGithub  \faMapMarker
     \ifthenelse{\equal{\mm@mail}{}}{\hphantom{1pt}} {  {\color{headings} \raisebox{-0.2em}{\includegraphics[width=1.2em]{images/icons/email.png}} } ~\href{mailto:\mm@mail}{\mm@mail} ~~}
+    \ifthenelse{\equal{\mm@phone}{}}{\hphantom{1pt}} { {\color{headings} \raisebox{-0.2em}{\includegraphics[width=1.2em]{images/icons/phonebook.png}} } ~\mm@phone ~~}
     \ifthenelse{\equal{\mm@address}{}}{\hphantom{1pt}} { {\color{headings} \raisebox{-0.2em}{\includegraphics[width=1.2em]{images/icons/map.png}} } ~\mm@address ~~}
-    \ifthenelse{\equal{\mm@website}{}}{\hphantom{1pt}} { {\color{headings} \raisebox{-0.2em}{\includegraphics[width=1.2em]{images/icons/github.png}} } ~\href{https://\mm@website}{\mm@website} ~~}
+    \ifthenelse{\equal{\mm@website}{}}{\hphantom{1pt}} { {\color{headings} \raisebox{-0.2em}{\includegraphics[width=1.2em]{images/icons/github.png}} } ~\href{\mm@website}{\mm@website} ~~}
 } % Contact information font
 \noindent\makebox[\linewidth]{\rule{\paperwidth}{0.4pt}} % Horizontal rule
 \vspace{-10pt} % Reduce whitespace after the rule slightly
