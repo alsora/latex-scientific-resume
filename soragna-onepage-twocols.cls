@@ -32,10 +32,11 @@
 \definecolor{LightGray}{HTML}{666666}
 \definecolor{DarkGray}{HTML}{333333}
 
-\colorlet{primary}{SlateGray}
-\colorlet{headings}{Sepia}
-\colorlet{details}{LightGray}
-\colorlet{jobtitle}{SlateGray}
+\colorlet{PrimaryColor}{SlateGray}
+\colorlet{HeadingsColor}{Sepia}
+\colorlet{DetailsColor}{LightGray}
+\colorlet{JobTitleColor}{SlateGray}
+\colorlet{IconsColor}{PrimaryColor} % Used only with fontawesome icons
 
 \makeatletter
 \newcommand{\globalcolor}[1]{%
@@ -126,18 +127,18 @@ ItalicFont=RobotoMono-LightItalic]
 \newcommand{\chooseiconset}[1]{
 	\ifthenelse{\equal{#1}{fontawesome}}
     {
-    	\DeclareRobustCommand{\aboutmeicon}				{\hfill\scalebox{1}{\mbox{\faUser}}}
-		\DeclareRobustCommand{\technicalskillsicon}		{\hfill\scalebox{1}{\mbox{\faCogs}}}
-		\DeclareRobustCommand{\languagesicon}			{\hfill\scalebox{1}{\mbox{\faLanguage}}}
-		\DeclareRobustCommand{\experienceicon}			{\hfill\scalebox{1}{\mbox{\faSuitcase}}}
-		\DeclareRobustCommand{\educationicon}			{\hfill\scalebox{1}{\mbox{\faGraduationCap}}}
-		\DeclareRobustCommand{\awardscertificatesicon}	{\hfill\scalebox{1}{\mbox{\faTrophy}}}
-		\DeclareRobustCommand{\publicationsicon}		{\hfill\scalebox{1}{\mbox{\faBook}}}
+    	\DeclareRobustCommand{\aboutmeicon}				{\color{IconsColor} \hfill\scalebox{1}{\mbox{\faUser}}}
+		\DeclareRobustCommand{\technicalskillsicon}		{\color{IconsColor} \hfill\scalebox{1}{\mbox{\faCogs}}}
+		\DeclareRobustCommand{\languagesicon}			{\color{IconsColor} \hfill\scalebox{1}{\mbox{\faLanguage}}}
+		\DeclareRobustCommand{\experienceicon}			{\color{IconsColor} \hfill\scalebox{1}{\mbox{\faSuitcase}}}
+		\DeclareRobustCommand{\educationicon}			{\color{IconsColor} \hfill\scalebox{1}{\mbox{\faGraduationCap}}}
+		\DeclareRobustCommand{\awardscertificatesicon}	{\color{IconsColor} \hfill\scalebox{1}{\mbox{\faTrophy}}}
+		\DeclareRobustCommand{\publicationsicon}		{\color{IconsColor} \hfill\scalebox{1}{\mbox{\faBook}}}
 
-		\DeclareRobustCommand{\emailicon}				{{\color{headings} \faEnvelope}}
-		\DeclareRobustCommand{\phoneicon}				{{\color{headings} \faPhone}}
-		\DeclareRobustCommand{\githubicon}				{{\color{headings} \faGithub}}
-		\DeclareRobustCommand{\mapicon}					{{\color{headings} \faMapMarker}}
+		\DeclareRobustCommand{\emailicon}				{{\color{IconsColor} \faEnvelope}}
+		\DeclareRobustCommand{\phoneicon}				{{\color{IconsColor} \faPhone}}
+		\DeclareRobustCommand{\githubicon}				{{\color{IconsColor} \faGithub}}
+		\DeclareRobustCommand{\mapicon}					{{\color{IconsColor} \faMapMarker}}
     }
     {
     	\ifthenelse{\equal{#1}{freepik}}
@@ -185,7 +186,7 @@ ItalicFont=RobotoMono-LightItalic]
 \newcommand{\lastupdated}{ % Create a new command for printing the Last Updated text
 \begin{textblock}{25}(75,2) % The position of the Last Updated text on the page (75% of the page across, 2% down)
 {
-\color{details}\fontspec[Path = fonts/raleway/]{Raleway-ExtraLight}\fontsize{8pt}{10pt}\selectfont % Text styling of the text
+\color{DetailsColor}\fontspec[Path = fonts/raleway/]{Raleway-ExtraLight}\fontsize{8pt}{10pt}\selectfont % Text styling of the text
 Last Updated on \today % Last Updated text
 }
 \end{textblock}}
@@ -208,7 +209,7 @@ Last Updated on \today % Last Updated text
 \DeclareDocumentCommand{\headersection}{m}
 {%
 	% key defaults + new ones
-  	\setkeys{headersection}{name={Name}, surname={Surname}, phone={+1 000 0000000}, mail={yahoo@gmail.com}, website={https://www.whitehouse.gov/}, address={Address}, birth={25 December 2018},#1}%
+  \setkeys{headersection}{name={}, surname={}, phone={}, mail={}, website={}, address={}, birth={},#1}
 	\centering{ % Center the name
 		\fontsize{40pt}{60pt} % Font size
 		\fontspec[Path = fonts/lato/]{Lato-Hai}\selectfont \bfseries \mm@name \thinspace
@@ -217,10 +218,10 @@ Last Updated on \today % Last Updated text
 	\\[5pt] % Whitespace between the name and contact information
 	\centering{ % Center the contact information
 		\fontspec[Path = fonts/raleway/]{Raleway-Medium}\fontsize{11pt}{14pt}\selectfont
-		\ifthenelse{\equal{\mm@mail}{}}{\hphantom{1pt}} { \emailicon ~\href{mailto:\mm@mail}{\mm@mail} ~~}
-		\ifthenelse{\equal{\mm@phone}{}}{\hphantom{1pt}} { \phoneicon ~\mm@phone ~~}
-		\ifthenelse{\equal{\mm@address}{}}{\hphantom{1pt}} { \mapicon ~\mm@address ~~}
-		\ifthenelse{\equal{\mm@website}{}}{\hphantom{1pt}} { \githubicon ~\href{\mm@website}{\mm@website} ~~}
+		\ifthenelse{\equal{\mm@mail}{}}{} { \emailicon ~\href{mailto:\mm@mail}{\mm@mail} ~~}
+		\ifthenelse{\equal{\mm@phone}{}}{} { \phoneicon ~\mm@phone ~~}
+		\ifthenelse{\equal{\mm@address}{}}{} { \mapicon ~\mm@address ~~}
+		\ifthenelse{\equal{\mm@website}{}}{} { \githubicon ~\href{\mm@website}{\mm@website} ~~}
 	} % Contact information font
 	\noindent\makebox[\linewidth]{\rule{\paperwidth}{0.4pt}} % Horizontal rule
 	\vspace{-10pt} % Reduce whitespace after the rule slightly
@@ -248,7 +249,7 @@ Last Updated on \today % Last Updated text
 
 % Customize the section titles
 \titleformat{\section}{ 
-\color{headings}
+\color{HeadingsColor}
 \scshape\fontspec[Path = fonts/kiona/]{Kiona-Regular}\fontsize{\titlefontsize}{\titlefontbaselineskip}\selectfont \raggedright\uppercase}{}{0em}{}[]
 % alternative title fonts:
 %[Path = fonts/lato/]{Lato-Bol}
@@ -284,13 +285,13 @@ Last Updated on \today % Last Updated text
     % first minipage for position details and decscription
     \begin{minipage}{\positionwidth}  
 		% company/university name
-		{  \color{DarkGray}\fontspec[Path = fonts/caviar_dreams/]{CaviarDreams_Bold}\fontsize{12pt}{12pt}\selectfont\bfseries\uppercase {\mm@company} \normalfont}
+		{  \color{DarkGray}\fontspec[Path = fonts/caviar_dreams/]{CaviarDreams_Bold}\fontsize{12pt}{12pt}\selectfont\bfseries\uppercase {\mm@title} \normalfont}
 		% same line job title
-		{  \raggedright\scshape\fontspec[Path = fonts/caviar_dreams/]{CaviarDreams_Bold}\fontsize{11pt}{13pt}\selectfont { ~|~~ {\color{jobtitle}  \mm@title  }\\} \normalfont}
+		{  \color{JobTitleColor}\raggedright\scshape\fontspec[Path = fonts/caviar_dreams/]{CaviarDreams_Bold}\fontsize{11pt}{13pt}\selectfont { ~|~~ { \mm@company }\\} \normalfont}
 	
 		% new line date and location    
-		\ifthenelse{\equal{\mm@date}{}}{} {{\small\makebox[0.6\linewidth][l]{\color{details} \faCalendar\hspace{0.5em}\raggedright\fontspec[Path = fonts/raleway/]{Raleway-Medium}\fontsize{10pt}{12pt}\selectfont {\mm@date } \normalfont}}}
-		\ifthenelse{\equal{\mm@location}{}}{} {{\small\makebox[0.3\linewidth][l]{\color{details} \faMapMarker\hspace{0.5em}\raggedright\fontspec[Path = fonts/raleway/]{Raleway-Medium}\fontsize{10pt}{12pt}\selectfont {\mm@location } \normalfont}}}
+		\ifthenelse{\equal{\mm@date}{}}{} {{\small\makebox[0.6\linewidth][l]{\color{DetailsColor} \faCalendar\hspace{0.5em}\raggedright\fontspec[Path = fonts/raleway/]{Raleway-Medium}\fontsize{10pt}{12pt}\selectfont {\mm@date } \normalfont}}}
+		\ifthenelse{\equal{\mm@location}{}}{} {{\small\makebox[0.3\linewidth][l]{\color{DetailsColor} \faMapMarker\hspace{0.5em}\raggedright\fontspec[Path = fonts/raleway/]{Raleway-Medium}\fontsize{10pt}{12pt}\selectfont {\mm@location } \normalfont}}}
 	
 		% new line optional position description
 		\mm@description
