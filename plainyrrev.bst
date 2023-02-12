@@ -132,7 +132,8 @@ FUNCTION {year.or.none}
 FUNCTION {output.bibitem}
 { newline$
   "\dateitem{" write$
-  year year.or.none write$
+  %year year.or.none write$ % this is commented to force showing all the years
+  year write$ % this alternative line always shows the year
   "}" write$
   newline$
   "{" write$
