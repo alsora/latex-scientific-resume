@@ -10,6 +10,19 @@
 
 \usepackage{hyperref} % Required for links
 
+\usepackage{sidecap}
+\usepackage{url}
+\usepackage{float}
+\usepackage{graphicx}
+
+\usepackage{ifthen}
+
+\usepackage{xstring}
+
+
+% useful for multiline comments
+\newcommand{\comment}[1]{}
+
 %----------------------------------------------------------------------------------------
 %	COLORS
 %----------------------------------------------------------------------------------------
@@ -26,6 +39,13 @@
 \colorlet{details}{LightGray}
 \colorlet{jobtitle}{SlateGray}
 
+\makeatletter
+\newcommand{\globalcolor}[1]{%
+  \color{#1}\global\let\default@color\current@color
+}
+\makeatother
+
+
 %----------------------------------------------------------------------------------------
 %	MARGINS
 %----------------------------------------------------------------------------------------
@@ -39,20 +59,53 @@
 
 \usepackage{fontspec} % Required for specifying custom fonts in XeLaTeX
 
-% The primary font for content text; defines bold, italic and bold-italic as well
-\setmainfont[Path = fonts/lato/,BoldItalicFont=Lato-RegIta,BoldFont=Lato-Reg,ItalicFont=Lato-LigIta]{Lato-Lig}
+%manually define some fonts
 
-%\setmainfont[Scale=0.75, Path = fonts/roboto_mono/,BoldItalicFont=RobotoMono-MediumItalic,BoldFont=RobotoMono-Medium,ItalicFont=RobotoMono-LightItalic]{RobotoMono-Regular}
+\newcommand{\usefontlato}
+{\setmainfont[Scale=1.0,
+Path = fonts/lato/,
+BoldItalicFont=Lato-RegIta,
+BoldFont=Lato-Reg,
+ItalicFont=Lato-LigIta]
+{Lato-Lig}}
+
+\newcommand{\usefontroboto}
+{\setmainfont[Scale=1.0, 
+Path = fonts/roboto/,
+BoldItalicFont=Roboto-BoldItalic,
+BoldFont=Roboto-Bold,
+ItalicFont=Roboto-LightItalic]
+{Roboto-Italic}}
+
+\newcommand{\usefontrobotomono}{\setmainfont[Scale=0.75,
+Path = fonts/roboto_mono/,
+BoldItalicFont=RobotoMono-MediumItalic,
+BoldFont=RobotoMono-Medium,
+ItalicFont=RobotoMono-LightItalic]
+{RobotoMono-Regular}}
+
+% switch command for selecting font
+% fallback to latex standard fonts
+\newcommand{\choosefont}[1]{%
+\IfStrEqCase{#1}{
+	{Lato}{\usefontlato}
+    {Roboto}{\usefontroboto}
+    {Roboto_mono}{\usefontrobotomono}}
+    [\setmainfont{#1}] % else case
+}
 
 
-\setsansfont[Scale=MatchLowercase,Mapping=tex-text, Path = fonts/raleway/]{Raleway-ExtraLight} % The font used where \sfffamily is called
+% The font used where \sfffamily is called
+\setsansfont[Scale=MatchLowercase,Mapping=tex-text, Path = fonts/raleway/]{Raleway-ExtraLight} 
 
 
+% create a tag: word or sentence surrounded by a rectangle with rounded edges
 \usepackage{amssymb}
 \usepackage{tikz}
 \newcommand{\cvtag}[1]{%
   \tikz[baseline]\node[anchor=base,draw=DarkGray!30,rounded corners,inner xsep=0.5ex,inner ysep =0.75ex,text height=1.3ex,text depth=.25ex]{#1};
 }
+
 
 
 %----------------------------------------------------------------------------------------
@@ -77,7 +130,6 @@ Last Updated on \today % Last Updated text
 %----------------------------------------------------------------------------------------
 
 \usepackage{fontawesome}
-
 
 \makeatletter
 % ========= KEY DEFINITIONS =========
@@ -113,45 +165,87 @@ Last Updated on \today % Last Updated text
 \makeatother
 
 
+
 %----------------------------------------------------------------------------------------
 %	SECTION TITLE STYLING AND SPACING
 %----------------------------------------------------------------------------------------
 
 \usepackage{titlesec} % Required for customizing section/subsection/etc titles
 
-\titlespacing{\section}{0pt}{0pt}{0pt} % Removes the spacing around the main section titles
-\titlespacing{\subsection}{0pt}{0pt}{0pt} % Removes the spacing around the subsections
-\newcommand{\sectionspace}{\vspace{8pt}} % Defines a command to add a set amount of space after sections and subsections
-
-\titleformat{\section}{ % Customize the large section titles
-\color{headings}\scshape\fontspec[Path = fonts/lato/]{Lato-Bol}\fontsize{16pt}{24pt}\selectfont \raggedright\uppercase}{}{0em}{}
-
-\titleformat{\subsection}{ % Customize the subsections and places worked/studied titles
-\color{DarkGray}\fontspec[Path = fonts/lato/]{Lato-Bol}\fontsize{12pt}{12pt}\selectfont\bfseries\uppercase}{}{0em}{}
-
-\newcommand{\runsubsection}[1]{ % Used for creating subsections where a description is required on the same line
-\color{DarkGray}\fontspec[Path = fonts/lato/]{Lato-Bol}\fontsize{12pt}{12pt}\selectfont\bfseries\uppercase {#1} \normalfont}
-
-\newcommand{\descript}[1]{ % Used for describing the subsection either on the same line or underneath
-\color{DarkGray}\raggedright\scshape\fontspec[Path = fonts/raleway/]{Raleway-Medium}\fontsize{11pt}{13pt}\selectfont {#1 \\} \normalfont}
-
-\newcommand{\location}[1]{ % Used for specifying a duration and/or location under a subsection
-\color{headings}\raggedright\fontspec[Path = fonts/raleway/]{Raleway-Medium}\fontsize{10pt}{12pt}\selectfont {#1\\} \normalfont}
-
-\usepackage{keyval,xparse}% http://ctan.org/pkg/{keyval,xparse}
+% Removes the spacing around the main section titles
+\titlespacing{\section}{0pt}{0pt}{0pt}
+% Removes the spacing around the subsections
+\titlespacing{\subsection}{0pt}{0pt}{0pt}
 
 
+\newcommand{\titlefontsize}{20pt}
+\newcommand{\titlefontbaselineskip}{25pt} %1.2 x size
 
-\usepackage{sidecap}
-\usepackage{geometry}
-\usepackage{url}
-\usepackage{float}
-\usepackage{graphicx}
+% Customize the section titles
+\titleformat{\section}{ 
+\color{headings}
+\scshape\fontspec[Path = fonts/kiona/]{Kiona-Regular}\fontsize{\titlefontsize}{\titlefontbaselineskip}\selectfont \raggedright\uppercase}{}{0em}{}[]
+% alternative title fonts:
+%[Path = fonts/lato/]{Lato-Bol}
+
+% Customize the subsections
+\titleformat{\subsection}{ 
+\color{DarkGray}
+\fontspec[Path = fonts/caviar_dreams/]{CaviarDreams_Bold}\fontsize{12pt}{12pt}\selectfont\bfseries\uppercase}{}{0em}{}[]
+%[Path = fonts/lato/]{Lato-Bol}
+
+% Defines a command to add a set amount of space after sections and subsections
+\newcommand{\sectionspace}{\vspace{8pt}}
 
 
-\usepackage{ifthen}
+%----------------------------------------------------------------------------------------
+%	ICON SET CHOICE
+%----------------------------------------------------------------------------------------
+%\scalebox{1.5}
+%\adjustbox{height=\titlefontsize ,keepaspectratio}
 
 
+\newcommand{\chooseiconset}[1]{
+	\ifthenelse{\equal{#1}{fontawesome}}
+    {
+    	\DeclareRobustCommand{\aboutmeicon}{\hfill\scalebox{1}{\mbox{\faUser}}}
+		\DeclareRobustCommand{\technicalskillsicon}{\hfill\scalebox{1}{\mbox{\faCogs}}}
+		\DeclareRobustCommand{\languagesicon}{\hfill\scalebox{1}{\mbox{\faLanguage}}}
+		\DeclareRobustCommand{\experienceicon}{\hfill\scalebox{1}{\mbox{\faSuitcase}}\hspace{0.15\linewidth}}
+		\DeclareRobustCommand{\educationicon}{\hfill\scalebox{1}{\mbox{\faGraduationCap}}\hspace{0.15\linewidth}}
+		\DeclareRobustCommand{\awardscertificatesicon}{\hfill\scalebox{1}{\mbox{\faTrophy}}\hspace{0.15\linewidth}}
+		\DeclareRobustCommand{\publicationsicon}{\hfill\scalebox{1}{\mbox{\faBook}}\hspace{0.15\linewidth}}
+    }
+    {
+    	\ifthenelse{\equal{#1}{freepik}}
+    	{
+    		\DeclareRobustCommand{\aboutmeicon}{\hfill\scalebox{1}{\mbox{\includegraphics[width=1em]{images/icons/boss.png}}}}
+    		\DeclareRobustCommand{\technicalskillsicon}{\hfill\scalebox{1}{\mbox{\includegraphics[width=1em]{images/icons/tools.png}}}}
+    		\DeclareRobustCommand{\languagesicon}{\hfill\scalebox{1}{\mbox{\includegraphics[width=1em]{images/icons/translator.png}}}}    	
+    		\DeclareRobustCommand{\experienceicon}{\hfill\scalebox{1}{\mbox{\includegraphics[width=1em]{images/icons/briefcase.png}}}\hspace{0.15\linewidth}}
+    		\DeclareRobustCommand{\educationicon}{\hfill\scalebox{1}{\mbox{\includegraphics[width=1em]{images/icons/open-book.png}}}\hspace{0.15\linewidth}}
+    		\DeclareRobustCommand{\awardscertificatesicon}{\hfill\scalebox{1}{\mbox{\includegraphics[width=1em]{images/icons/quality.png}}}\hspace{0.15\linewidth}}
+    		\DeclareRobustCommand{\publicationsicon}{\hfill\scalebox{1}{\mbox{\includegraphics[width=1em]{images/icons/plan.png}}}\hspace{0.15\linewidth}}    	
+    	}
+    	{
+    	\DeclareRobustCommand{\aboutmeicon}{}
+		\DeclareRobustCommand{\technicalskillsicon}{}
+		\DeclareRobustCommand{\languagesicon}{}
+		\DeclareRobustCommand{\experienceicon}{}
+		\DeclareRobustCommand{\educationicon}{}
+		\DeclareRobustCommand{\awardscertificatesicon}{}
+		\DeclareRobustCommand{\publicationsicon}{}
+    	}
+    }
+}
+
+
+
+%----------------------------------------------------------------------------------------
+%	CREATE POSITION
+%----------------------------------------------------------------------------------------
+
+% define the \createposition command, used for listing work experiences and education entries
 
 \makeatletter
 % ========= KEY DEFINITIONS =========
@@ -168,9 +262,12 @@ Last Updated on \today % Last Updated text
     % first minipage for position details and decscription
     \begin{minipage}{0.86\linewidth}  
     % company/university name
-{  \color{DarkGray}\fontspec[Path = fonts/lato/]{Lato-Bol}\fontsize{12pt}{12pt}\selectfont\bfseries\uppercase {\mm@company} \normalfont}
+{  \color{DarkGray}\fontspec[Path = fonts/caviar_dreams/]{CaviarDreams_Bold}\fontsize{12pt}{12pt}\selectfont\bfseries\uppercase {\mm@company} \normalfont}
   % same line job title
-{  \raggedright\scshape\fontspec[Path = fonts/raleway/]{Raleway-Medium}\fontsize{11pt}{13pt}\selectfont { ~|~~ {\color{jobtitle}  \mm@title  }\\} \normalfont}
+{  \raggedright\scshape\fontspec[Path = fonts/caviar_dreams/]{CaviarDreams_Bold}\fontsize{11pt}{13pt}\selectfont { ~|~~ {\color{jobtitle}  \mm@title  }\\} \normalfont}
+%{ \scshape\fontspec[Path = fonts/caviar_dreams/]{CaviarDreams_Bold}\fontsize{11pt}{13pt}\selectfont { {\color{jobtitle}  \mm@title  ~~~}} \normalfont}
+%{\color{DarkGray}\fontspec[Path = fonts/lato/]{Lato-Bol}\fontsize{12pt}{12pt}\selectfont\bfseries\uppercase {\mm@company} \normalfont}
+  % same line job title
   
     % new line date and location    
    \ifthenelse{\equal{\mm@date}{}}{} {{\small\makebox[0.6\linewidth][l]{\color{details} \faCalendar\hspace{0.5em}\raggedright\fontspec[Path = fonts/raleway/]{Raleway-Medium}\fontsize{10pt}{12pt}\selectfont {\mm@date } \normalfont}}}
@@ -189,21 +286,18 @@ Last Updated on \today % Last Updated text
 }
 \makeatother
 
-\usepackage{dashrule}
 
+% create a dashed line as divider between experiences.
+% to use it add \divider in the .tex file
+\usepackage{dashrule}
 
 \newcommand{\divider}{\color{text!30}{\hdashrule{0.92\linewidth}{0.5pt}{2.15pt}}\medskip}
 
+
+
 %----------------------------------------------------------------------------------------
-%	SECTION TITLE STYLING AND SPACING
+%	BIBLIOGRAPHY SETTINGS
 %----------------------------------------------------------------------------------------
-
-\newenvironment{tightitemize} % Defines the tightitemize environment which modifies the itemize environment to be more compact
-{\vspace{-\topsep}\begin{itemize}\itemsep1pt \parskip0pt \parsep0pt}
-{\end{itemize}\vspace{-\topsep}}
-
-
-
 
 
 \usepackage{natbib}

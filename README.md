@@ -19,4 +19,4 @@ make
 
 
 
-Header icons made by [Freepik](https://www.freepik.com/) from [Flaticon](www.flaticon.com) are licensed by [CC 3.0 BY](http://creativecommons.org/licenses/by/3.0/).
+Header icons made by [Freepik](https://www.freepik.com/) from [Flaticon](https://www.flaticon.com) are licensed by [CC 3.0 BY](http://creativecommons.org/licenses/by/3.0/).

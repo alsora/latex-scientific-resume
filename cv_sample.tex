@@ -5,17 +5,34 @@
 
 \documentclass[letterpaper]{soragna-onepage-twocols} % Use US Letter paper, change to a4paper for A4 
 
+
 %----------------------------------------------------------------------------------------
-%	FONTS AND COLORS
+%	SETTINGS
 %----------------------------------------------------------------------------------------
 
+% color used for all standard text
+\colorlet{primary}{SlateGray}
 
 % color used for all section headers
-\colorlet{headings}{Sepia}
+\colorlet{headings}{Orange}
+%\colorlet{headings}{Sepia}
 
+
+% options: Lato, Roboto, Roboto_mono
+\choosefont{Roboto}
+
+
+% options: fontawesome, freepik, or leave it empty
+\chooseiconset{freepik}
+
+%----------------------------------------------------------------------------------------
+%	DOCUMENT
+%----------------------------------------------------------------------------------------
 
 
 \begin{document}
+
+\globalcolor{primary}
 
 \nocite{*}
 
@@ -44,7 +61,7 @@
 % About Me
 %------------------------------------------------
 
-\section{About Me} 
+\section{About Me  \aboutmeicon} 
 
 
 Current Co-founder \& Software Engineer in start-up company PLAT Corp. 5+ years experience specializing in backend/infrastructure, web development and computer security. Super nerd who loves Vim, Linux and OS X and enjoys to customize all of the development environment. Interested in devising a better problem-solving method for challenging tasks, and learning new technologies and tools if the need arises.
@@ -56,14 +73,12 @@ Current Co-founder \& Software Engineer in start-up company PLAT Corp. 5+ years 
 % Languages
 %------------------------------------------------
 
-\section{Languages} 
+\section{Languages \languagesicon} 
 
-% download more flags from here
-%https://github.com/gosquared/flags/tree/master/flags/flags/shiny/64
 
-\raisebox{-0.1em}{\includegraphics[width=1em]{images/flag/italy.png}} ~ {\bf Italian}: ~ Mothertongue\\
-\raisebox{-0.1em}{\includegraphics[width=1em]{images/flag/united-states.png}} ~ {\bf English}: ~ Proficient\\
-\raisebox{-0.1em}{\includegraphics[width=1em]{images/flag/china.png}} ~ {\bf Chinese:} ~ Basic spoken
+\raisebox{-0.1em}{\includegraphics[width=1em]{images/flag/italy.png}} ~ {Italian}: ~ Mothertongue\\
+\raisebox{-0.1em}{\includegraphics[width=1em]{images/flag/united-states.png}} ~ {English}: ~ Proficient\\
+\raisebox{-0.1em}{\includegraphics[width=1em]{images/flag/china.png}} ~ {Chinese:} ~ Basic spoken
 
 
 \sectionspace % Some whitespace after the section
@@ -72,26 +87,37 @@ Current Co-founder \& Software Engineer in start-up company PLAT Corp. 5+ years 
 % Skills
 %------------------------------------------------
 
-\section{Technical Skills}
+\section{Skills \technicalskillsicon }
 
-\subsection{Languages}
+\subsection{Technical}
 
-%\textbullet{} 
-\cvtag{Bash} \cvtag{C} \cvtag{C++} \cvtag{Java} \cvtag{JavaScript} \cvtag{Matlab} \cvtag{Python} \\
+3+ years experience with \textbf{C++}\\
+{\emph{Libraries:} \small\emph{Eigen, OpenCV, ROS and more}}\\
+3+ years experience with \textbf{Python}\\
+{\emph{Libraries:} \small\emph{Numpy, Scikit-learn, Tensorflow and more}}\\
+Worked on several projects using \textbf{Bash}, \textbf{C}, \textbf{Java}, \textbf{JavaScript},  \textbf{Matlab}\\
+Proficient with \textbf{Docker}, \textbf{Git}, \textbf{LaTeX}\\
 
+\subsection{Soft}
 
-
-\subsection{Libraries}
-
-\cvtag{Caffe} \cvtag{CoreNLP} \cvtag{Eigen} \cvtag{OpenCV} \cvtag{ROS} \cvtag{Scikit-Learn} \cvtag{Tensorflow} \\
-
-\subsection{Tools}
-
-\cvtag{Docker} \cvtag{Git} \cvtag{LaTeX} \cvtag{Office} \cvtag{Simulink} \\
-
-\sectionspace % Some whitespace after the section
+Fast Learner\\
+\emph{I'm always curious and eager to learn new concepts in any subject I encounter.}\\
+Problem Solver\\
+\emph{My objective-driven mindset allows me to quickly find scalable solutions to everyday issues.}\\
+Independent\\
+\emph{I'm capable of working and of organizing duties with small or no supervision.}\\
+Communicator\\
+\emph{I have done several publich speeches and created effective presentation slides.}\\
 
 %----------------------------------------------------------------------------------------
+
+
+
+% Skills
+%------------------------------------------------
+
+%\section{Soft Skills}
+
 
 \end{minipage} % The end of the left column
 \hfill
@@ -106,7 +132,7 @@ Current Co-founder \& Software Engineer in start-up company PLAT Corp. 5+ years 
 % Experience
 %------------------------------------------------
 
-\section{Experience}
+\section{Experience  \experienceicon}
 
 %------------------------------------------------
 
@@ -125,11 +151,11 @@ Placeholder text designed to have exactly three lines. Three lines describing wh
 \sectionspace % Some whitespace between each position
 
 \createposition{
-    company={CORNELL ROBOTICS LAB},
+    company={MUSIXMATCH},
     title={Head Undergrad Research},
     date={Mar 2014 – Present},
     location={Ithaca, NY},
-    logo={},
+    logo={images/logo/musixmatch.png},
     description={
         Worked with \textbf{\href{http://www.cs.cornell.edu/~ashesh/}{Ashesh Jain}} and \textbf{\href{http://www.cs.cornell.edu/~asaxena/}{Prof Ashutosh Saxena}} to create \textbf{PlanIt}, a tool which learns from large scale user preference feedback to plan robot trajectories in human environments. Publication submitted.
     }
@@ -138,11 +164,11 @@ Placeholder text designed to have exactly three lines. Three lines describing wh
 \sectionspace % Some whitespace between each position
 
 \createposition{
-    company={MCDONALDS},
+    company={NASA},
     title={Collaborator},
     date={Jan 2014 – Mar 2014},
     location={Ithaca, NY},
-    logo={images/logo/mcdonalds.jpg},
+    logo={images/logo/nasa.png},
     description={
 Placeholder text designed to have exactly three lines. Three lines describing what you did in this job is just about right for this template. Keep it simple and understandable. Let the details for the interview.
     }
@@ -156,7 +182,7 @@ Placeholder text designed to have exactly three lines. Three lines describing wh
 % Education
 %------------------------------------------------
 
-\section{Education}
+\section{Education \educationicon}
 
 
 \createposition{
@@ -167,8 +193,8 @@ Placeholder text designed to have exactly three lines. Three lines describing wh
     logo={images/logo/sapienza.jpg},
     description={
 	Final Grade: 110/110  {\small\emph{Summa cum Laude}} $~|~$ 
-	Dissertation: \emph{``New Frontiers: Robots Eating Blackberries''}  $~|~$ {Advisor: Prof. Name \textsc{Surname}}\\
-	Study Emphases: Industrial and Mobile Robotics, Computer Vision, Machine Learning, Neural Networks
+	Dissertation: \emph{``New Frontiers: Robots Eating Blackberries''}  ~ {Advisor: \emph{Prof. Name  Surname}}\\
+	Study Emphases: \emph{Industrial and Mobile Robotics, Computer Vision, Machine Learning, Neural Networks}
     }
 }
 
@@ -182,8 +208,8 @@ Placeholder text designed to have exactly three lines. Three lines describing wh
     logo={images/logo/almamater.png},
     description={
 	Final Grade: 110/110  {\small\emph{Summa cum Laude}}  $~|~$
-	Dissertation: \emph{``New Frontiers: Robots Eating Blackberries''}  $~|~$ {Advisor: Prof. Name \textsc{Surname}}\\
-	Study Emphases: Mathematics, Control Theory, Control System Technologies, Electric Drives
+	Dissertation: \emph{``New Frontiers: Robots Eating Blackberries''}  ~ {Advisor:  \emph{Prof. Name Surname}}\\
+	Study Emphases: \emph{Mathematics, Control Theory, Control System Technologies, Electric Drives}
     }
 }
 
@@ -193,7 +219,7 @@ Placeholder text designed to have exactly three lines. Three lines describing wh
 % Awards and Certificates
 %------------------------------------------------
 
-\section{Awards and Certificates} 
+\section{Awards and Certificates \awardscertificatesicon} 
 
 \begin{tabular}{rll}
 2014	 & KPCB Engineering Fellow\\
@@ -208,10 +234,14 @@ Placeholder text designed to have exactly three lines. Three lines describing wh
 % Publications
 %------------------------------------------------
 
-\section{Publications} 
+\section{Publications \publicationsicon} 
+
+% use minipage as for experience and education
+\begin{minipage}{0.86\linewidth} 
 
 \bibliography{sample}
 
+\end{minipage}
 
 \sectionspace % Some whitespace after the section
 
