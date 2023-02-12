@@ -292,6 +292,17 @@ Last Updated on \today % Last Updated text
 
 \newcommand{\divider}{\color{text!30}{\hdashrule{0.92\linewidth}{0.5pt}{2.15pt}}\medskip}
 
+%----------------------------------------------------------------------------------------
+%	LANGUAGES
+%----------------------------------------------------------------------------------------
+
+\newcommand{\languageskill}[3]{
+	\raisebox{-0.1em}{\includegraphics[width=1em]{#3}}
+	\makebox[1.5cm][l]{
+		#1:
+	}
+	~ #2\\
+}
 
 %----------------------------------------------------------------------------------------
 %	ITEMS SETTINGS
