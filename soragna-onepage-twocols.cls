@@ -153,7 +153,7 @@ ItalicFont=RobotoMono-LightItalic]
 
 			\DeclareRobustCommand{\emailicon}				{\raisebox{-0.2em}{\includegraphics[width=1.2em]{images/icons/email.png}}}
 			\DeclareRobustCommand{\phoneicon}				{\raisebox{-0.2em}{\includegraphics[width=1.2em]{images/icons/phonebook.png}}}
-			\DeclareRobustCommand{\githubicon}				{\raisebox{-0.2em}{\includegraphics[width=1.2em]{images/icons/github.png}}}
+			\DeclareRobustCommand{\githubicon}				{\raisebox{-0.2em}{\includegraphics[width=1.2em]{images/icons/world-wide-web.png}}}
 			\DeclareRobustCommand{\mapicon}					{\raisebox{-0.2em}{\includegraphics[width=1.2em]{images/icons/map.png}}}
     	}
     	{
