@@ -1,6 +1,6 @@
 .PHONY : all latex bibtex view clean distclean
 
-TARGET=cv_sample
+TARGET=resume
 SOURCE=$(TARGET).tex
 LATEX=lualatex
 
