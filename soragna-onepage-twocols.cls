@@ -14,6 +14,7 @@
 \usepackage{url}
 \usepackage{float}
 \usepackage{graphicx}
+\usepackage{enumitem}
 
 \usepackage{ifthen}
 \usepackage{xstring}
