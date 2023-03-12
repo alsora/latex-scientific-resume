@@ -144,12 +144,12 @@ ItalicFont=RobotoMono-LightItalic]
     	\ifthenelse{\equal{#1}{freepik}}
     	{
     		\DeclareRobustCommand{\aboutmeicon}				{\hfill\scalebox{1}{\mbox{\includegraphics[width=1em]{images/icons/boss.png}}}}
-    		\DeclareRobustCommand{\technicalskillsicon}		{\hfill\scalebox{1}{\mbox{\includegraphics[width=1em]{images/icons/tools.png}}}}
+    		\DeclareRobustCommand{\technicalskillsicon}		{\hfill\scalebox{1}{\mbox{\includegraphics[width=1em]{images/icons/skills.png}}}}
     		\DeclareRobustCommand{\languagesicon}			{\hfill\scalebox{1}{\mbox{\includegraphics[width=1em]{images/icons/translator.png}}}}    	
     		\DeclareRobustCommand{\experienceicon}			{\hfill\scalebox{1}{\mbox{\includegraphics[width=1em]{images/icons/briefcase.png}}}}
-    		\DeclareRobustCommand{\educationicon}			{\hfill\scalebox{1}{\mbox{\includegraphics[width=1em]{images/icons/open-book.png}}}}
-    		\DeclareRobustCommand{\awardscertificatesicon}	{\hfill\scalebox{1}{\mbox{\includegraphics[width=1em]{images/icons/quality.png}}}}
-    		\DeclareRobustCommand{\publicationsicon}		{\hfill\scalebox{1}{\mbox{\includegraphics[width=1em]{images/icons/plan.png}}}}
+    		\DeclareRobustCommand{\educationicon}			{\hfill\scalebox{1}{\mbox{\includegraphics[width=1em]{images/icons/education.png}}}}
+    		\DeclareRobustCommand{\awardscertificatesicon}	{\hfill\scalebox{1}{\mbox{\includegraphics[width=1em]{images/icons/medal.png}}}}
+    		\DeclareRobustCommand{\publicationsicon}		{\hfill\scalebox{1}{\mbox{\includegraphics[width=1em]{images/icons/report.png}}}}
 
 			\DeclareRobustCommand{\emailicon}				{\raisebox{-0.2em}{\includegraphics[width=1.2em]{images/icons/email.png}}}
 			\DeclareRobustCommand{\phoneicon}				{\raisebox{-0.2em}{\includegraphics[width=1.2em]{images/icons/phonebook.png}}}
