@@ -127,13 +127,13 @@ ItalicFont=RobotoMono-LightItalic]
 \newcommand{\chooseiconset}[1]{
 	\ifthenelse{\equal{#1}{fontawesome}}
     {
-    	\DeclareRobustCommand{\aboutmeicon}				{\color{IconsColor} \hfill\scalebox{1}{\mbox{\faUser}}}
-		\DeclareRobustCommand{\technicalskillsicon}		{\color{IconsColor} \hfill\scalebox{1}{\mbox{\faCogs}}}
-		\DeclareRobustCommand{\languagesicon}			{\color{IconsColor} \hfill\scalebox{1}{\mbox{\faLanguage}}}
-		\DeclareRobustCommand{\experienceicon}			{\color{IconsColor} \hfill\scalebox{1}{\mbox{\faSuitcase}}}
-		\DeclareRobustCommand{\educationicon}			{\color{IconsColor} \hfill\scalebox{1}{\mbox{\faGraduationCap}}}
-		\DeclareRobustCommand{\awardscertificatesicon}	{\color{IconsColor} \hfill\scalebox{1}{\mbox{\faTrophy}}}
-		\DeclareRobustCommand{\publicationsicon}		{\color{IconsColor} \hfill\scalebox{1}{\mbox{\faBook}}}
+    	\DeclareRobustCommand{\aboutmeicon}				{\color{IconsColor} \faUser}
+		\DeclareRobustCommand{\technicalskillsicon}		{\color{IconsColor} \faCogs}
+		\DeclareRobustCommand{\languagesicon}			{\color{IconsColor} \faLanguage}
+		\DeclareRobustCommand{\experienceicon}			{\color{IconsColor} \faSuitcase}
+		\DeclareRobustCommand{\educationicon}			{\color{IconsColor} \faGraduationCap}
+		\DeclareRobustCommand{\awardscertificatesicon}	{\color{IconsColor} \faTrophy}
+		\DeclareRobustCommand{\publicationsicon}		{\color{IconsColor} \faBook}
 
 		\DeclareRobustCommand{\emailicon}				{{\color{IconsColor} \faEnvelope}}
 		\DeclareRobustCommand{\phoneicon}				{{\color{IconsColor} \faPhone}}
@@ -143,13 +143,13 @@ ItalicFont=RobotoMono-LightItalic]
     {
     	\ifthenelse{\equal{#1}{freepik}}
     	{
-    		\DeclareRobustCommand{\aboutmeicon}				{\hfill\scalebox{1}{\mbox{\includegraphics[width=1em]{images/icons/boss.png}}}}
-    		\DeclareRobustCommand{\technicalskillsicon}		{\hfill\scalebox{1}{\mbox{\includegraphics[width=1em]{images/icons/skills.png}}}}
-    		\DeclareRobustCommand{\languagesicon}			{\hfill\scalebox{1}{\mbox{\includegraphics[width=1em]{images/icons/translator.png}}}}    	
-    		\DeclareRobustCommand{\experienceicon}			{\hfill\scalebox{1}{\mbox{\includegraphics[width=1em]{images/icons/briefcase.png}}}}
-    		\DeclareRobustCommand{\educationicon}			{\hfill\scalebox{1}{\mbox{\includegraphics[width=1em]{images/icons/education.png}}}}
-    		\DeclareRobustCommand{\awardscertificatesicon}	{\hfill\scalebox{1}{\mbox{\includegraphics[width=1em]{images/icons/medal.png}}}}
-    		\DeclareRobustCommand{\publicationsicon}		{\hfill\scalebox{1}{\mbox{\includegraphics[width=1em]{images/icons/report.png}}}}
+    		\DeclareRobustCommand{\aboutmeicon}				{\includegraphics[width=1em]{images/icons/boss.png}}
+    		\DeclareRobustCommand{\technicalskillsicon}		{\includegraphics[width=1em]{images/icons/skills.png}}
+    		\DeclareRobustCommand{\languagesicon}			{\includegraphics[width=1em]{images/icons/translator.png}}	
+    		\DeclareRobustCommand{\experienceicon}			{\includegraphics[width=1em]{images/icons/briefcase.png}}
+    		\DeclareRobustCommand{\educationicon}			{\includegraphics[width=1em]{images/icons/education.png}}
+    		\DeclareRobustCommand{\awardscertificatesicon}	{\includegraphics[width=1em]{images/icons/medal.png}}
+    		\DeclareRobustCommand{\publicationsicon}		{\includegraphics[width=1em]{images/icons/report.png}}
 
 			\DeclareRobustCommand{\emailicon}				{\raisebox{-0.2em}{\includegraphics[width=1.2em]{images/icons/email.png}}}
 			\DeclareRobustCommand{\phoneicon}				{\raisebox{-0.2em}{\includegraphics[width=1.2em]{images/icons/phonebook.png}}}
@@ -232,10 +232,24 @@ Last Updated on \today % Last Updated text
 %	SECTION TITLE STYLING AND SPACING
 %----------------------------------------------------------------------------------------
 
+% width of left and right section; they do not sum up to 100 to make it look nicer
+\newcommand{\leftsectionwidth}{0.3\textwidth}
+\newcommand{\rightsectionwidth}{0.66\textwidth}
+
 % Wrapper commands to be used for sections on the left or right column
-\newcommand{\leftsection}[2]{\section{#1 #2}}
-% Aligns icons in the right column with the company/position logos
-\newcommand{\rightsection}[2]{\section{#1 {#2 \hspace{\logowidth}}}}
+% These commands build up the section title as "word + logo"
+\newcommand{\leftsection}[2]{%
+ \section{% 
+		#1% the section title word
+		{\hfill\raisebox{-0.3ex}{\scalebox{1}{#2}}}% the section logo, all the way to the right, lowered by 0.3ex
+  }%
+}
+\newcommand{\rightsection}[2]{%
+ \section{%
+		#1% the section title word
+		{\hfill\raisebox{-0.3ex}{\scalebox{1}{#2}} \hspace{10em}}% the section logo, pushed to the right minus 10em, lowered by 0.3ex
+  }%
+}
 
 \usepackage{titlesec} % Required for customizing section/subsection/etc titles
 
@@ -262,6 +276,7 @@ Last Updated on \today % Last Updated text
 
 % Defines a command to add a set amount of space after sections and subsections
 \newcommand{\sectionspace}{\vspace{8pt}}
+\newcommand{\smallsectionspace}{\vspace{1pt}}
 
 %----------------------------------------------------------------------------------------
 %	CREATE POSITION COMMAND
