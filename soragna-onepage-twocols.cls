@@ -282,6 +282,11 @@ Last Updated on \today % Last Updated text
 %	CREATE POSITION COMMAND
 %----------------------------------------------------------------------------------------
 
+% Display the second arg if the first arg is not empty
+\newcommand{\IfNotEmpty}[2]{%
+  \ifthenelse{\equal{#1}{}}{}{#2}%
+}
+
 % define the \createposition command, used for listing work experiences and education entries
 
 \makeatletter
@@ -295,18 +300,27 @@ Last Updated on \today % Last Updated text
 \DeclareDocumentCommand{\createposition}{m}%
 {%
 	% key defaults + new ones
-	\setkeys{createposition}{company={My Company},title={Engineer of nothing},date={May 2013 - Aug 2013}, location={Russia}, logo={images/logo/mcdonalds}, description={},#1}%
+	\setkeys{createposition}{company={},title={},date={}, location={}, logo={}, description={},#1}%
     
-    % first minipage for position details and decscription
-    \begin{minipage}{\positionwidth}  
-		% company/university name
-		{  \color{DarkGray}\fontspec[Path = fonts/caviar_dreams/]{CaviarDreams_Bold}\fontsize{12pt}{12pt}\selectfont\bfseries\uppercase {\mm@title} \normalfont}
-		% same line job title
-		{  \color{JobTitleColor}\raggedright\scshape\fontspec[Path = fonts/caviar_dreams/]{CaviarDreams_Bold}\fontsize{11pt}{13pt}\selectfont { ~|~~ { \mm@company }\\} \normalfont}
-	
-		% new line date and location    
-		\ifthenelse{\equal{\mm@date}{}}{} {{\small\makebox[0.6\linewidth][l]{\color{DetailsColor} \faCalendar\hspace{0.5em}\raggedright\fontspec[Path = fonts/raleway/]{Raleway-Medium}\fontsize{10pt}{12pt}\selectfont {\mm@date } \normalfont}}}
-		\ifthenelse{\equal{\mm@location}{}}{} {{\small\makebox[0.3\linewidth][l]{\color{DetailsColor} \faMapMarker\hspace{0.5em}\raggedright\fontspec[Path = fonts/raleway/]{Raleway-Medium}\fontsize{10pt}{12pt}\selectfont {\mm@location } \normalfont}}}
+    % first minipage for position details and description
+    \begin{minipage}{\positionwidth}
+
+		{%
+			\color{JobTitleColor}%
+			\raggedright\scshape
+			\fontspec[Path=fonts/caviar_dreams/]{CaviarDreams_Bold}%
+			\fontsize{11pt}{13pt}\selectfont
+			% job title first
+			\uppercase{\mm@title}%
+			% show | with equal space only if company is not empty
+			\IfNotEmpty{\mm@company}{\hspace{0.6em}|\hspace{0.6em}\mm@company}%
+			\\%
+			\normalfont
+		}
+
+		% new line date and location
+		\IfNotEmpty{\mm@date}{{\small\makebox[0.6\linewidth][l]{\color{DetailsColor} \faCalendar\hspace{0.5em}\raggedright\fontspec[Path = fonts/raleway/]{Raleway-Medium}\fontsize{10pt}{12pt}\selectfont {\mm@date } \normalfont}}}
+		\IfNotEmpty{\mm@location}{{\small\makebox[0.3\linewidth][l]{\color{DetailsColor} \faMapMarker\hspace{0.5em}\raggedright\fontspec[Path = fonts/raleway/]{Raleway-Medium}\fontsize{10pt}{12pt}\selectfont {\mm@location } \normalfont}}}
 	
 		% new line optional position description
 		\mm@description
@@ -317,9 +331,7 @@ Last Updated on \today % Last Updated text
 	\ifthenelse{\lengthtest{\logowidth > 1mm}}
 	{%
 		\begin{minipage}{\logowidth}
-			\ifthenelse{\equal{\mm@logo}{}}
-			{}
-			{ \begin{flushright} \includegraphics[width=1.4cm] {\mm@logo} \end{flushright} }
+			\IfNotEmpty{\mm@logo} { \begin{flushright} \includegraphics[width=1.4cm] {\mm@logo} \end{flushright} }
 		\end{minipage}
 	}
 	{}
