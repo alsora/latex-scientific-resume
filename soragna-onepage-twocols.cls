@@ -276,7 +276,7 @@ Last Updated on \today % Last Updated text
 
 % Defines a command to add a set amount of space after sections and subsections
 \newcommand{\sectionspace}{\vspace{8pt}}
-\newcommand{\smallsectionspace}{\vspace{1pt}}
+\newcommand{\smallsectionspace}{\vspace{3pt}}
 
 %----------------------------------------------------------------------------------------
 %	CREATE POSITION COMMAND
@@ -286,6 +286,15 @@ Last Updated on \today % Last Updated text
 \newcommand{\IfNotEmpty}[2]{%
   \ifthenelse{\equal{#1}{}}{}{#2}%
 }
+
+% Define a new environment to include nice itemized lists inside position descriptions
+\usepackage{enumitem}
+\newenvironment{descitemize}{
+    \begin{itemize}[noitemsep, topsep=0pt, leftmargin=*, after=\vspace{0pt}]
+}{
+    \end{itemize} \vspace{-5pt} % The negative space ensures that the separator after the itemize matches a regular one
+}
+
 
 % define the \createposition command, used for listing work experiences and education entries
 
